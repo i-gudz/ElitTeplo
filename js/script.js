@@ -1,30 +1,29 @@
 $('.responsive').slick({
     dots: true,
     infinite: false,
-    speed: 800,
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [{
-            breakpoint: 1380,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-            }
-        }, {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        }, {
-            breakpoint: 570,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
+        breakpoint: 1380,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
         }
+    }, {
+        breakpoint: 1200,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+        }
+    }, {
+        breakpoint: 570,
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+        }
+    }
         // You can unslick at a given breakpoint now by adding:
         // settings: "unslick"
         // instead of a settings object
@@ -33,22 +32,21 @@ $('.responsive').slick({
 $('.responsives').slick({
     dots: true,
     infinite: false,
-    speed: 800,
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [{
-            breakpoint: 1290,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        }, {
-            breakpoint: 910,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
+        breakpoint: 1290,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
         }
+    }, {
+        breakpoint: 910,
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+        }
+    }
         // You can unslick at a given breakpoint now by adding:
         // settings: "unslick"
         // instead of a settings object
@@ -57,22 +55,21 @@ $('.responsives').slick({
 $('.completed_projects_slider').slick({
     dots: true,
     infinite: false,
-    speed: 800,
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [{
-            breakpoint: 1320,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        }, {
-            breakpoint: 910,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
+        breakpoint: 1320,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
         }
+    }, {
+        breakpoint: 910,
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+        }
+    }
         // You can unslick at a given breakpoint now by adding:
         // settings: "unslick"
         // instead of a settings object
@@ -81,14 +78,13 @@ $('.completed_projects_slider').slick({
 $('.mobile_card').slick({
     dots: true,
     infinite: false,
-    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
 });
 $('.sertificate').slick({
     dots: true,
     infinite: false,
-    speed: 800,
+    speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [{
@@ -147,7 +143,7 @@ $(window).scroll({
     },
     function () {
         let currentTop = $(window).scrollTop();
-        if (currentTop < (this.previousTop + 2)) {
+        if (currentTop < (this.previousTop + 1)) {
             $(".header").show();
         } else {
             $(".header").hide();
@@ -170,6 +166,9 @@ $('#askOff').click(function () {
 $('#btnOnCalc').click(function () {
     $('.offCalc').css('display', 'flex');
     $('#btnOnCalc').hide(500);
+    $('#btnOffCalc').show(500);
+});
+$('.calc__group--input').click(function () {
     $('#btnOffCalc').show(500);
 });
 $('#btnOffCalc').click(function () {
@@ -237,15 +236,20 @@ if (window.innerWidth <= 768) {
 $(document).mouseup(function (e) { // событие клика по веб-документу
     let div = $('.accordion, .accordion1, .accordion2, .accordion3, .accordion4, .accordion5'); // тут указываем ID элемента
     if (!div.is(e.target) // если клик был не по нашему блоку
-        &&
-        div.has(e.target).length === 0) { // и не по его дочерним элементам
+        && div.has(e.target).length === 0) { // и не по его дочерним элементам
         div.hide(500);
         // скрываем его
     }
 });
-$(document).mouseup(function (e) {
+
+$('.callacc').click(function(){
     $('.accordion, .accordion1, .accordion2, .accordion3, .accordion4, .accordion5').hide(500);
-});
+})
+
+// $(document).mouseup(function (e) {
+//     $('.accordion, .accordion1, .accordion2, .accordion3, .accordion4, .accordion5').hide(500);
+// });
+
 $(function () {
     $('.minimized').click(function (event) {
         let i_path = $(this).attr('src');
@@ -265,9 +269,9 @@ $(function () {
     });
 });
 // Set the date we're counting down to
-let countDownDate = new Date("Jul 01, 2021 00:00:00").getTime();
-let countDownDateSecond = new Date("Jul 01, 2021 00:00:00").getTime();
-let countDownDateThird = new Date("Jul 01, 2021 00:00:00").getTime();
+let countDownDate = new Date("Nov 30, 2021 00:00:00").getTime();
+let countDownDateSecond = new Date("Nov 30, 2021 00:00:00").getTime();
+let countDownDateThird = new Date("Nov 30, 2021 00:00:00").getTime();
 // Update the count down every 1 second
 let x = setInterval(function () {
     // Get todays date and time
@@ -336,7 +340,9 @@ let z = setInterval(function () {
 function menuOnClick() {
     document.getElementById("menu-bar").classList.toggle("change");
     document.getElementById("nav").classList.toggle("change");
+    document.getElementById("lang").classList.toggle("change");
     document.getElementById("menu-bg").classList.toggle("change-bg");
+
 }
 
 $(".f1").find("a").click(function () {
@@ -355,7 +361,8 @@ let calc = {
             arrayLength = $(" .calc__group--input").length;
         for (let i = 0; i < arrayLength; i++) {
             array[i] = parseInt($(" .calc__group--input").eq(i).find("input:checked").attr("value")) || 0;
-        };
+        }
+        ;
         return array;
     })(),
     summation: function () { //суммирует значения массива с данными
@@ -364,7 +371,8 @@ let calc = {
             i = this.valueArray.length - 1;
         for (; i >= 0; i--) {
             summ += this.valueArray[i] * area;
-        };
+        }
+        ;
         this.summ = summ;
         $("#summ").html(calc.summ);
     },
@@ -383,3 +391,21 @@ let calc = {
     }
 };
 calc.init();
+
+$(document).on("click", "#nav", function(e) {
+    e.preventDefault();
+    let id  = $(this).attr('href');
+    let top = $(id).offset().top; // получаем координаты блока
+    $('body, html').animate({scrollTop: top}, 800); // плавно переходим к блоку
+});
+
+
+$('#phone').mouseover(function(){
+    $('.prompt').css('opacity','1');
+})
+
+$('#phone').mouseout(function(){
+    $('.prompt').css('opacity','0');
+})
+
+

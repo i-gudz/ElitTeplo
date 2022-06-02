@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Elit TEPLO</title>
     <link rel="stylesheet" href="fonts/BebasNeue/BebasNeue_fonts.css">
     <link rel="stylesheet" href="fonts/GothamPro/GothamPro_fonts.css">
@@ -11,1379 +11,1177 @@
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+    <style>
+        .modals {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(30, 9, 85, .7) !important; /* Black w/ opacity */
+            max-width: 100%;
+        }
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+        .modal-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 40%;
+            background-color: #fff;
+            margin: auto;
+            padding: 0;
+            /* border: 5px solid #7B1FA2; */
+            border-radius: 15px;
+            width: 50%;
+            height: 50px;
+            box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+
+
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+
+        .close {
+            color: #000;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 5px;
+            top: -5px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #9C27B0;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #9C27B0;
+            color: white;
+        }
+
+        .esc {
+            position: relative;
+        }
+
+        .bg_b {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: grey;
+            opacity: 0;
+            top: 0;
+            z-index: +1;
+            margin: 0 !important;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="header">
-        <header>
-            <div id="menu">
-                <div id="menu-bar" onclick="menuOnClick()">
-                    <div id="bar1" class="bar"></div>
-                    <div id="bar2" class="bar"></div>
-                    <div id="bar3" class="bar"></div>
-                </div>
-                <nav class="nav" id="nav">
-                    <ul>
-                        <li>
-                            <a href="#">Акции</a>
-                        </li>
-                        <li>
-                            <a href="#">Каталог</a>
-                        </li>
-                        <li>
-                            <a href="#">о нас</a>
-                        </li>
-                        <li>
-                            <a href="#">Отзывы</a>
-                        </li>
-                        <li>
-                            <a href="#">Примеры работ</a>
-                        </li>
-                    </ul>
-                </nav>
+<div class="header">
+    <header>
+        <div id="menu">
+            <div id="menu-bar" onclick="menuOnClick()">
+                <div id="bar1" class="bar"></div>
+                <div id="bar2" class="bar"></div>
+                <div id="bar3" class="bar"></div>
+            </div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li onclick="menuOnClick()">
+                        <a id="nav" href="#recomendation">Акції</a>
+                    </li>
+                    <li onclick="menuOnClick()">
+                        <a id="nav" href="#select_floor">Каталог</a>
+                    </li>
+                    <li onclick="menuOnClick()">
+                        <a id="nav" href="#about_us">Про нас</a>
+                    </li>
+                    <li onclick="menuOnClick()">
+                        <a id="nav" href="#customer_opinion">Відгуки</a>
+                    </li>
+                    <li onclick="menuOnClick()">
+                        <a id="nav" href="#completed_projects">Приклади робіт</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div id="lang" class="lang">
+                <a href="indexRU.html">РУС</a>
+                /
+                <a href="index.html" class="active">УКР</a>
             </div>
 
-            <div class="menu-bg" id="menu-bg"></div>
-            <div class="logo"><img src="img/logo.png" alt="logo">
+        </div>
+
+        <div class="menu-bg" id="menu-bg"></div>
+        <div class="logo">
+            <img src="img/logo.png" alt="logo">
+            <div class="lang">
+                <a href="indexRU.html">РУС</a>
+                /
+                <a href="index.html" class="active">УКР</a>
             </div>
-            <div class="nav">
+        </div>
+
+        <div class="nav">
+            <ul>
+                <li>
+                    <a id="nav" href="#recomendation">Акції</a>
+                    <img src="img/bg_nav.png" alt="">
+                </li>
+                <li>
+                    <a id="nav" href="#select_floor">Каталог</a>
+                    <img src="img/bg_nav.png" alt="">
+                </li>
+                <li>
+                    <a id="nav" href="#about_us">Про нас</a>
+                    <img src="img/bg_nav.png" alt="">
+                </li>
+                <li>
+                    <a id="nav" href="#customer_opinion">Відгуки</a>
+                    <img src="img/bg_nav.png" alt="">
+                </li>
+                <li>
+                    <a id="nav" href="#completed_projects">Приклади робіт</a>
+                    <img src="img/bg_nav.png" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="social">
+            <div class="social_messenger">
                 <ul>
                     <li>
-                        <a href="#">Акции</a>
+                        <a href="" class="link_desktop"><img src="img/viber.png" alt="">Viber</a>
+                        <a href="" class="mobile_link"><img src="img/viber.png" alt=""></a>
                     </li>
                     <li>
-                        <a href="#">Каталог</a>
+                        <a href="" class="link_desktop"><img src="img/whatsapp.png" alt="">Whatsapp</a>
+                        <a href="" class="mobile_link"><img src="img/whatsapp.png" alt=""></a>
                     </li>
                     <li>
-                        <a href="#">о нас</a>
-                    </li>
-                    <li>
-                        <a href="#">Отзывы</a>
-                    </li>
-                    <li>
-                        <a href="#">Примеры работ</a>
+                        <a href="" class="link_desktop"><img src="img/telegram.png" alt="">Telegram</a>
+                        <a href="" class="mobile_link"><img src="img/telegram.png" alt=""></a>
                     </li>
                 </ul>
             </div>
-            <div class="social">
-                <div class="social_messenger">
-                    <ul>
+            <div class="phone">
+                <a href="tel:+380996780000"><span>+3 8(099) 678-00-00</span></a>
+                <a href="tel:+380996780000"><span>+3 8(099) 678-00-00</span></a>
+                <a href="tel:+380996780000"><span>+3 8(099) 678-00-00</span></a>
+            </div>
+        </div>
+    </header>
+</div>
+
+<section class="shares">
+    <div class="container">
+        <h1>Теплі підлоги</h1>
+        <h2>від виробника в будь-якій точці України</h2>
+        <ul class="main_advantages">
+            <li>
+                <img src="img/sticker.png" alt="">
+                <div class="description">
+                    <p>
+                        <b>25 років гарантії</b> від виробника
+                    </p>
+                </div>
+            </li>
+            <li>
+                <img src="img/price.png" alt="">
+                <div class="description">
+                    <p>
+                        <b>Найнижчі ціни </b> в Україні – від 14 грн/м
+                    </p>
+                </div>
+            </li>
+            <li>
+                <img src="img/pig.png" alt="">
+                <div class="description">
+                    <p>
+                        <b>До 45% економія</b> на обігріві
+                    </p>
+                </div>
+            </li>
+            <li>
+                <img src="img/procent.png" alt="">
+                <div class="description">
+                    <p>
+                        <b>На 40% вигідніше,</b> ніж у конкурентів
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <p>Працюємо цілодобово і без вихідних</p>
+        <div class="hot_shares">
+            <h5>Установка і підключення теплої підлоги <span>+</span></h5>
+            <h5>програмований WiFi терморегулятор <span>в подарунок!</span></h5>
+            <div class="counter">
+                <div class="hour">
+                    <p>Тільки до 01.01.2020</p>
+
+                    <ul class="timer">
                         <li>
-                            <a href="" class="link_desktop"><img src="img/viber.png" alt="">Viber</a>
-                            <a href="" class="mobile_link"><img src="img/viber.png" alt=""></a>
+                            <div class="border">
+                                <h4>
+                                    <div id="days" class="days_1">0</div>
+                                </h4>
+                            </div>
+
+                            <span>днів</span>
                         </li>
                         <li>
-                            <a href="" class="link_desktop"><img src="img/whatsapp.png" alt="">Whatsapp</a>
-                            <a href="" class="mobile_link"><img src="img/whatsapp.png" alt=""></a>
+                            <div class="border">
+                                <h4>
+                                    <div id="hrs" class="hours_1">0</div>
+                                </h4>
+                            </div>
+                            <span>годин</span>
                         </li>
                         <li>
-                            <a href="" class="link_desktop"><img src="img/telegram.png" alt="">Telegram</a>
-                            <a href="" class="mobile_link"><img src="img/telegram.png" alt=""></a>
+                            <div class="border">
+                                <h4>
+                                    <div id="min" class="minutes_1">0</div>
+                                </h4>
+                            </div>
+                            <span>хвилин</span>
+                        </li>
+                        <li>
+                            <div class="border">
+                                <h4>
+                                    <div id="sec" class="seconds_1">0</div>
+                                </h4>
+                            </div>
+                            <span>секунд</span>
                         </li>
                     </ul>
                 </div>
-                <div class="phone">
-                    <a href="tel:+380996780000"><span>+3 8(099) 678-00-00</span></a>
-                    <a href="tel:+380996780000"><span>+3 8(099) 678-00-00</span></a>
-                    <a href="tel:+380996780000"><span>+3 8(099) 678-00-00</span></a>
-                </div>
+                <img src="img/termo.jpg" alt="">
             </div>
-        </header>
+            <div class="callback">
+                <form action="" onsubmit="return false">
+                    <input id='phone' autocomplete="off" required/>
+                    <button class="esc">
+                        <div class="bg_b"></div>
+                        <a href="#ex3" id="clearIn" rel="modal:open">Залишити заявку </a>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+        <h4>За 1 день безкоштовно ПІДБЕРЕМО, ДОСТАВИМО та ВСТАНОВИМО вам теплу підлогу </h4>
+    </div>
+    <p>Звичайна вартість монтажу теплої підлоги <b>від 2000грн </b> иі вартість програмованого терморегулятора з WiFi
+        управлінням від 1400грн </b></p>
+</section>
+
+<section class="what_gender">
+    <div class="container">
+        <h2>Яка підлога вам підійде?</h2>
+        <ul class="card">
+            <li>
+                <div class="image">
+                    <img src="img/heating_mats_system.jpg" alt="">
+                </div>
+
+                <p>Мат під плитку /стяжку</p>
+                <div class="accordion">
+                    <div class="callacc"><img src="img/tick.png" alt="">Може використовуватися як основне, так і додаткове джерело опалення
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Швидкий монтаж, тому що не вимагається обов'язкова стяжка
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Швидкий розігрів</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Високий рівень безпеки</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Рівномірний обігрів</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Термін служби - більше 50 років</div>
+                    <div class="callback">
+                        <form action="" onsubmit="return false">
+                            <input id='phonePr' autocomplete="off" required/>
+                            <button class="esc">
+                                <div class="bg_b"></div>
+                                <a href="#ex3" id="clearIn" rel="modal:open">Замовити</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <button id="acc_open">Докладніше</button>
+            </li>
+            <li class="firstLi">
+                <div class="image">
+                    <img src="img/heating_mats.jpg" alt="">
+                </div>
+
+                <p>Алюмінієві мати. Під ламінат, ...</p>
+                <div class="accordion1">
+                    <div class="callacc"><img src="img/tick.png" alt=""> Може використовуватися як основне, так і
+                        додаткове джерело
+                        опалення
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Швидкий і чистий монтаж - без стяжки і клею
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Може використовуватися повторно навіть під
+                        існуюче покриття
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Можна стелити відразу на дерево, OSB, фанеру,
+                        гіпсокартон
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Швидкий розігрів</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Високий рівень безпеки</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Рівномірний обігрів</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Термін служби - більше 50 років</div>
+                    <div class="callback">
+                        <form action="" onsubmit="return false">
+                            <input id='phonePr1' autocomplete="off" required/>
+                            <button class="esc">
+                                <div class="bg_b"></div>
+                                <a href="#ex3" id="clearIn" rel="modal:open">Замовити</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <button id="acc_open1">Докладніше</button>
+            </li>
+            <li>
+                <div class="image">
+                    <img src="img/cable_warm_floor.jpg" alt="">
+                </div>
+
+                <p>Кабель під плитку/стяжку</p>
+                <div class="accordion2">
+                    <div class="callacc"><img src="img/tick.png" alt=""> Може використовуватися як основне джерело
+                        опалення
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Невисока вартість</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Можна утеплювати стіни, тротуари, дороги, дахи,
+                        водостоки, труби
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Равномерное распределение тепла</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Високий рівень безпеки</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Термін служби - від 30 років</div>
+                    <div class="callback">
+                        <form action="" onsubmit="return false">
+                            <input id='phonePr2' autocomplete="off" required/>
+                            <button class="esc">
+                                <div class="bg_b"></div>
+                                <a href="#ex3" id="clearIn" rel="modal:open">Замовити</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <button id="acc_open2">Докладніше</button>
+            </li>
+            <li>
+                <div class="image">
+                    <img src="img/film_warm_floor.png" alt="">
+                </div>
+
+                <p>ІЧ плівка під ламінат/лінолеум</p>
+                <div class="accordion3">
+                    <div class="callacc"><img src="img/tick.png" alt=""> При професійному розрахунку може застосовуватися
+                        як основне
+                        джерело опалення
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Швидкий і чистий монтаж - без стяжки і клею
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Може використовуватися повторно навіть під
+                        існуюче покриття
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Підходить для застосування як на підлозі, так і на
+                        стінах
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Можна стелити відразу на дерево, OSB, фанеру,
+                        гіпсокартон
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Термін служби - більше 15 років</div>
+                    <div class="callback">
+                        <form action="" onsubmit="return false">
+                            <input id='phonePr3' autocomplete="off" required/>
+                            <button class="esc">
+                                <div class="bg_b"></div>
+                                <a href="#ex3" id="clearIn" rel="modal:open">Замовити</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <button id="acc_open3">Докладніше</button>
+            </li>
+            <li>
+                <div class="image">
+                    <img src="img/outdoor_heating.png" alt="">
+                </div>
+
+                <p>Зовнішній обігрів /антиобледеніння</p>
+                <div class="accordion4">
+                    <div class="callacc"><img src="img/tick.png" alt=""> Автоматизована робота по датчикам опадів,
+                        температури,
+                        льоду і т.д.
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Може працювати при низьких температурах</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Можна обігрівати будь-які об'єкти поза приміщенням
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Рівномірний розподіл тепла</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Високий рівень безпеки</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Термін служби - від 30 років</div>
+                    <div class="callback">
+                        <form action="" onsubmit="return false">
+                            <input id='phonePr4' autocomplete="off" required/>
+                            <button class="esc">
+                                <div class="bg_b"></div>
+                                <a href="#ex3" id="clearIn" rel="modal:open">Замовити</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <button id="acc_open4">Докладніше</button>
+            </li>
+            <li>
+                <div class="image">
+                    <img src="img/water_floor.png" alt="">
+                </div>
+
+                <p>Водна тепла підлога ...</p>
+                <div class="accordion5">
+                    <div class="callacc"><img src="img/tick.png" alt=""> Складний монтаж, для здійснення якого
+                        потрібен фахівець
+                    </div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Створює велике навантаження на перекриття</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Необхідність регулярних оглядів</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Низька стійкість до корозії</div>
+                    <div class="callacc"><img src="img/tick.png" alt=""> Низька безпека через імовірність протікання
+                    </div>
+                    <div class="callback">
+                        <form action="" onsubmit="return false">
+                            <input id='phonePr5' autocomplete="off" required/>
+                            <button class="esc">
+                                <div class="bg_b"></div>
+                                <a href="#ex3" id="clearIn" rel="modal:open">Замовити</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <button id="acc_open5">Докладніше</button>
+            </li>
+        </ul>
+        <p>Наш фахівець буде радий проконсультувати вас по всіх особливостях використання і монтажу теплої підлоги.
+            Вникнемо в вашу ситуацію, пояснимо всі нюанси і підберемо варіант, що ідеально підходить саме під ваші
+            умови.
+        </p>
+        <div class="callback">
+            <form action="" onsubmit="return false">
+                <input id='expert' autocomplete="off" required/>
+                <button class="esc">
+                    <div class="bg_b"></div>
+                    <a href="#ex3" id="clearIn" rel="modal:open">Отримати безкоштовну консультацію експерта </a>
+                </button>
+            </form>
+
+        </div>
     </div>
 
-    <section class="shares">
-        <div class="container">
-            <h1>теплый пол</h1>
-            <h2>от производителя в любой точке Украины</h2>
-            <ul class="main_advantages">
-                <li>
-                    <img src="img/sticker.png" alt="">
-                    <div class="description">
-                        <p>
-                            <b>25 лет гарантии</b> от производителя
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <img src="img/price.png" alt="">
-                    <div class="description">
-                        <p>
-                            <b>Самые низкие цены</b> в Украине – от 14 грн/м
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <img src="img/pig.png" alt="">
-                    <div class="description">
-                        <p>
-                            <b>До 45% экономия</b> на обогреве
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <img src="img/procent.png" alt="">
-                    <div class="description">
-                        <p>
-                            <b>На 40% выгоднее,</b> чем у конкурентов
-                        </p>
-                    </div>
-                </li>
-            </ul>
-            <p>Работаем круглосуточно и без выходных</p>
-            <div class="hot_shares">
-                <h5>Установка и подключение теплого пола <span>+</span></h5>
-                <h5>программируемый WiFi терморегулятор <span>в подарок!</span></h5>
-                <div class="counter">
-                    <div class="hour">
-                        <p>Только до 29.10.2021</p>
-
-                        <ul class="timer">
-                            <li>
-                                <div class="border">
-                                    <h4>
-                                        <div id="days" class="days_1">0</div>
-                                    </h4>
-                                </div>
-
-                                <span>дней</span>
-                            </li>
-                            <li>
-                                <div class="border">
-                                    <h4>
-                                        <div id="hrs" class="hours_1">0</div>
-                                    </h4>
-                                </div>
-                                <span>часов</span>
-                            </li>
-                            <li>
-                                <div class="border">
-                                    <h4>
-                                        <div id="min" class="minutes_1">0</div>
-                                    </h4>
-                                </div>
-                                <span>минут</span>
-                            </li>
-                            <li>
-                                <div class="border">
-                                    <h4>
-                                        <div id="sec" class="seconds_1">0</div>
-                                    </h4>
-                                </div>
-                                <span>секунд</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <img src="img/termo.jpg" alt="">
-                </div>
-                <div class="callback">
-                    <input type="text" placeholder="Ваш телефон">
-                    <button>Заказать консультацию</button>
-                </div>
-            </div>
-            <h4>За 1 день бесплатно подберем, доставим и установим Вам теплый пол</h4>
-        </div>
-        <p>Обычная цена монтажа пола <b>от 2000грн</b> и цена программируемого терморегулятора с WiFi управлением <b>от
-                1400грн</b></p>
-    </section>
-
-    <section class="what_gender">
-        <div class="container">
-            <h2>Какой пол вам подойдет?</h2>
-            <ul class="card">
-                <li>
-                    <div class="image">
-                        <img src="img/heating_mats_system.jpg" alt="">
-                    </div>
-
-                    <p>Нагревательные маты. Под плитку, ...</p>
-                    <div class="accordion">
-                        <div><img src="img/tick.png" alt=""> Может использоваться как основной и дополнительный источник
-                            отопления
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Быстрый монтаж, т.к. не требуется обязательная стяжка</div>
-                        <div><img src="img/tick.png" alt=""> Быстрый разогрев</div>
-                        <div><img src="img/tick.png" alt=""> Высокая безопасность</div>
-                        <div><img src="img/tick.png" alt=""> Равномерный обогрев </div>
-                        <div><img src="img/tick.png" alt=""> Срок службы — более 50 лет</div>
-                        <div class="callback">
-                            <input type="text" placeholder="Ваш телефон">
-                            <button id="acc_close">Заказать</button>
-                        </div>
-                    </div>
-                    <button id="acc_open">Подробнее</button>
-                </li>
-                <li class="firstLi">
-                    <div class="image">
-                        <img src="img/heating_mats.jpg" alt="">
-                    </div>
-
-                    <p>Алюминиевые маты. Под ламинат, ...</p>
-                    <div class="accordion1">
-                        <div><img src="img/tick.png" alt=""> Может использоваться как основной и дополнительный источник
-                            отопления
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Быстрый и чистый монтаж – без стяжки и клея</div>
-                        <div><img src="img/tick.png" alt=""> Может использоваться повторно даже под существующее
-                            покрытие
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Можно стелить сразу на дерево, OSB, фанеру, гипсокартон
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Быстрый разогрев </div>
-                        <div><img src="img/tick.png" alt=""> Высокая безопасность</div>
-                        <div><img src="img/tick.png" alt=""> Равномерный обогрев</div>
-                        <div><img src="img/tick.png" alt=""> Срок службы — более 50 лет</div>
-                        <div class="callback">
-                            <input type="text" placeholder="Ваш телефон">
-                            <button id="acc_close1">Заказать</button>
-                        </div>
-                    </div>
-                    <button id="acc_open1">Подробнее</button>
-                </li>
-                <li>
-                    <div class="image">
-                        <img src="img/cable_warm_floor.jpg" alt="">
-                    </div>
-
-                    <p>Нагревательный кабель. Под стяжку, ...</p>
-                    <div class="accordion2">
-                        <div><img src="img/tick.png" alt=""> Может использоваться как основной источник отопления</div>
-                        <div><img src="img/tick.png" alt=""> Невысокая стоимость</div>
-                        <div><img src="img/tick.png" alt=""> Можно утеплять стены, тротуары, дороги, крыши, водостоки,
-                            трубы
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Равномерное распределение тепла</div>
-                        <div><img src="img/tick.png" alt=""> Высокий уровень безопасности  </div>
-                        <div><img src="img/tick.png" alt=""> Срок службы — от 30 лет</div>
-                        <div class="callback">
-                            <input type="text" placeholder="Ваш телефон">
-                            <button id="acc_close2">Заказать</button>
-                        </div>
-                    </div>
-                    <button id="acc_open2">Подробнее</button>
-                </li>
-                <li>
-                    <div class="image">
-                        <img src="img/film_warm_floor.png" alt="">
-                    </div>
-
-                    <p>Инфракрасная пленка. Под ламинат, ...</p>
-                    <div class="accordion3">
-                        <div><img src="img/tick.png" alt=""> При профессиональном расчете может применяться как основной
-                            источник отопления
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Быстрый и чистый монтаж – без стяжки и клея</div>
-                        <div><img src="img/tick.png" alt=""> Может использоваться повторно даже под существующее
-                            покрытие
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Подходит для применения как на полу, так и на стенах</div>
-                        <div><img src="img/tick.png" alt=""> Можно стелить сразу на дерево, OSB, фанеру, гипсокартон
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Срок службы — более 15 лет</div>
-                        <div class="callback">
-                            <input type="text" placeholder="Ваш телефон">
-                            <button id="acc_close3">Заказать</button>
-                        </div>
-                    </div>
-                    <button id="acc_open3">Подробнее</button>
-                </li>
-                <li>
-                    <div class="image">
-                        <img src="img/outdoor_heating.png" alt="">
-                    </div>
-
-                    <p>Кабель для наружного обогрева, саморегулирующийся ...</p>
-                    <div class="accordion4">
-                        <div><img src="img/tick.png" alt=""> Автоматизированная работа по датчикам осадков, температуры,
-                            льда и т.д.
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Может работать при низких температурах</div>
-                        <div><img src="img/tick.png" alt=""> Можно обогревать любые объекты вне помещения</div>
-                        <div><img src="img/tick.png" alt=""> Равномерное распределение тепла</div>
-                        <div><img src="img/tick.png" alt=""> Высокий уровень безопасности</div>
-                        <div><img src="img/tick.png" alt=""> рок службы — от 30 лет</div>
-                        <div class="callback">
-                            <input type="text" placeholder="Ваш телефон">
-                            <button id="acc_close4">Заказать</button>
-                        </div>
-                    </div>
-                    <button id="acc_open4">Подробнее</button>
-                </li>
-                <li>
-                    <div class="image">
-                        <img src="img/water_floor.png" alt="">
-                    </div>
-
-                    <p>Водяной теплый пол ...</p>
-                    <div class="accordion5">
-                        <div><img src="img/tick.png" alt=""> Сложный монтаж, для осуществления которого требуется
-                            специалист
-                        </div>
-                        <div><img src="img/tick.png" alt=""> Создает большую нагрузку на перекрытия</div>
-                        <div><img src="img/tick.png" alt=""> Необходимость регулярных осмотров</div>
-                        <div><img src="img/tick.png" alt=""> Низкая стойкость к коррозии</div>
-                        <div><img src="img/tick.png" alt=""> Низкая безопасность из-за вероятности протечек</div>
-                        <div class="callback">
-                            <input type="text" placeholder="Ваш телефон">
-                            <button id="acc_close5">Заказать</button>
-                        </div>
-                    </div>
-                    <button id="acc_open5">Подробнее</button>
-                </li>
-            </ul>
-            <p>Наш специалист будет рад проконсультировать вас по всем особенностям использования и монтажа теплого
-                пола. Вникнем в вашу ситуацию, объясним все нюансы и подберем вариант, идеально подходящий именно под
-                ваши условия
-            </p>
-            <div class="callback">
-                <input type="text" placeholder="Ваш телефон">
-                <button>Получить бесплатную консультацию эксперта</button>
-            </div>
-        </div>
-
-        <div class="our_advantages">
-            <div class="main">
-                <div class="container ">
-                    <h2>Какой пол вам подойдет?</h2>
-                    <ul class="cards">
-                        <li>
-                            <div class="img"><img src="img/award.png" alt=""></div>
-                            <h5>Сертифицированная продукция и сервисные центры</h5>
-                            <button class="showAdv">Подробнее</button>
-                            <span class="descriptionAdv">Все наши продукты имеют сертификаты Европы и США. Есть
-                                официальные сервисные центры гарантийного и пост-гарантийного обслуживания</span>
-                        </li>
-                        <li>
-                            <div class="img"><img src="img/money.png" alt=""></div>
-                            <h5>Честные цены</h5>
-                            <button class="showAdv">Подробнее</button>
-                            <span class="descriptionAdv">Мы абсолютно уверены, что у нас — самые выгодные цены. Но если
-                                вы найдете дешевле — просто скажите нам об этом и мы предложим цену ниже, чем у
-                                конкурентов</span>
-                        </li>
-                        <li>
-                            <div class="img"><img src="img/smarthome.png" alt=""></div>
-                            <h5>Инновационные системы управления с головного устройства («Умный дом») </h5>
-                            <button class="showAdv">Подробнее</button>
-                            <span class="descriptionAdv">Программируемый терморегулятор с WiFi управлением,
-                                предоставляет возможность регулировать систему отопления из любой точки земного шара и
-                                при этом экономить до 40% на электроэнергии</span>
-                        </li>
-                        <li>
-                            <div class="img"><img src="img/heater.png" alt=""></div>
-                            <h5>Возможность обогрева всей вашей квартиры, дома, балкона, террасы, подвала, дачи</h5>
-                            <button class="showAdv">Подробнее</button>
-                            <span class="descriptionAdv">Максимальная температура обогрева воздуха без батарей - 35
-                                градусов (для сауны до 90 градусов)</span>
-                        </li>
-                        <li>
-                            <div class="img"><img src="img/floor.png" alt=""></div>
-                            <h5>Возможность наружного обогрева и антиобледенения </h5>
-                            <button class="showAdv">Подробнее</button>
-                            <span class="descriptionAdv">Может использоваться для обогрева сада, грунта, тротуаров,
-                                дорог, крыш, водостоков, трубы и т.д.</span>
-                        </li>
-                        <li>
-                            <div class="img"><img src="img/floor (1).png" alt=""></div>
-                            <h5>Под любое напольное покрытие</h5>
-                            <button class="showAdv">Подробнее</button>
-                            <span class="descriptionAdv">Под плитку, паркет, доску, ламинат, линолеум, ковролин,
-                                наливной пол, микроцемент </span>
-                        </li>
-                        <li>
-                            <div class="img"><img src="img/pig.png" alt=""></div>
-                            <h5>Экономия 30-40% стоимости отопления</h5>
-                            <button class="showAdv">Подробнее</button>
-                            <span class="descriptionAdv">Расход электроэнергии – 30-40 Вт/м2, это меньше обычной
-                                лампочки! В месяц при постоянном включении примерно - 37 грн</span>
-                        </li>
-                        <li>
-                            <div class="img"><img src="img/temperature.png" alt=""></div>
-                            <h5>Высокоэффективное отопительное оборудование </h5>
-                            <button class="showAdv">Подробнее</button>
-                            <span class="descriptionAdv">Обогревательные системы новых поколений могут использоваться
-                                как основное или дополнительное отопление</span>
-                        </li>
-                    </ul>
-                    <h4>УНИКАЛЬНОЕ ПРЕДЛОЖЕНИЕ ОТ КОМПАНИИ ELITTEPLO!</h4>
-                    <p>Подобных условий вам не предложит ни одна другая компания!</p>
-                    <div class="hot_shares">
-                        <h5>Установка и подключение теплого пола <span>+</span></h5>
-                        <h5>программируемый WiFi терморегулятор <span>в подарок!</span></h5>
-                        <div class="counter">
-                            <div class="hour">
-                                <p>Внимание! Количество акционных программируемых WiFi регуляторов ограничено</p>
-                                <div class="text">Осталось
-                                    <div class="count">
-                                        12
-                                    </div>
-                                    терморегуляторов
-                                </div>
-                            </div>
-                            <img src="img/termo.jpg" alt="">
-                        </div>
-                        <div class="callback">
-                            <input type="text" placeholder="Ваш телефон">
-                            <button>Заказать консультацию</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="cooperation">
-        <div class="container">
-            <h2>напрямую сотрудничаем с лучшими мировыми брендами</h2>
-            <ul class="card">
-                <li>
-                    <img src="img/devi.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/nexans.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/arnold_rak.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/hemstedt.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/fenix.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/raychem.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/odescabel.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/grand_meyer.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/rexva.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/caleo.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/heat_plus.png" alt="">
-                </li>
-
-                <li>
-                    <img src="img/daewoo.png" alt="">
-                </li>
-
-            </ul>
-
-            <ul class="mobile_card">
-                <div>
-                    <div class="content">
-                        <li>
-                            <img src="img/devi.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/nexans.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/arnold_rak.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/hemstedt.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/fenix.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/raychem.png" alt="">
-                        </li>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="content">
-                        <li>
-                            <img src="img/odescabel.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/grand_meyer.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/rexva.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/caleo.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/heat_plus.png" alt="">
-                        </li>
-
-                        <li>
-                            <img src="img/daewoo.png" alt="">
-                        </li>
-                    </div>
-                </div>
-
-            </ul>
-            <div class="sale">
-                <div class="partner">
-                    <div class="head">
-                        <div class="lider">
-                            <p>Лидер</p>
-                            <p>продаж</p>
-                        </div>
-                        <div class="sale_procent">
-                            <p> -20%</p>
-                        </div>
-                    </div>
-                    <div class="logo_company"><img src="img/heat_tech.png" alt=""></div>
-                    <div class="flag_country"><img src="img/usa.png" alt=""></div>
-                </div>
-                <div class="partner">
-                    <div class="head">
-                        <div class="lider">
-                            <p>Лидер</p>
-                            <p>продаж</p>
-                        </div>
-                        <div class="sale_procent">
-                            <p> -20%</p>
-                        </div>
-                    </div>
-                    <div class="logo_company"><img src="img/schwarz.png" alt=""></div>
-                    <div class="flag_country"><img src="img/germany.png" alt=""></div>
-                </div>
-            </div>
-            <div class="callback">
-                <input type="text" placeholder="Ваш телефон">
-                <button>Узнать подробнее</button>
-            </div>
-        </div>
-
-        <div class="recomendation">
-
-            <div class="container">
-                <h2>Почему нас рекомендуют родным и друзьям: </h2>
-                <h2>наши предложения, акции, скидки </h2>
-                <ul class="content">
+    <div class="our_advantages">
+        <div class="main">
+            <div class="container ">
+                <h2>Яка підлога вам підійде?</h2>
+                <ul class="cards">
                     <li>
-                        <div class="image"><img src="img/money_box.png" alt=""></div>
-                        <div class="description">
-                            <h5>Самые лучшие цены в Украине</h5>
-                            <p>Стоимость теплого пола – <b>от 14 грн/метр!</b> Вы экономите до 40% по сравнению с
-                                предложениями других компаний </p>
-                        </div>
+                        <div class="img"><img src="img/award.png" alt=""></div>
+                        <h5>Сертифікована продукція і сервісні центри </h5>
+                        <button class="showAdv">Подробнее</button>
+                        <span class="descriptionAdv">Всі наші продукти мають сертифікати Європи і США. Є офіційні сервісні центри гарантійного і пост-гарантійного обслуговування.</span>
                     </li>
                     <li>
-                        <div class="image"><img src="img/builder.png" alt=""></div>
-                        <div class="description">
-                            <h5>Бесплатный монтаж и подключение</h5>
-                            <p><b>Сэкономьте до 50%!</b> Именно столько, по статистике, составляет стоимость установки и
-                                подключения теплого пола у тех конкурентов, которые предлагают монтаж.
-                            </p>
-                        </div>
+                        <div class="img"><img src="img/money.png" alt=""></div>
+                        <h5>Чесні ціни </h5>
+                        <button class="showAdv">Подробнее</button>
+                        <span class="descriptionAdv">Ми абсолютно впевнені, що у нас - найвигідніші ціни. Але якщо ви знайдете дешевше – просто скажіть нам про це нам і ми запропонуємо ціну нижчу ніж у конкурентів. </span>
                     </li>
                     <li>
-                        <div class="image"><img src="img/delivery.png" alt=""></div>
-                        <div class="description">
-                            <h5>Быстрая бесплатная доставка</h5>
-                            <p><b>В течение 1 суток, без предоплаты,</b> доставим систему обогрева в любой регион
-                                Украины — даже в отдаленные населенные пункты</p>
-                        </div>
+                        <div class="img"><img src="img/smarthome.png" alt=""></div>
+                        <h5>Інноваційні системи управління з головного пристрою («Розумний дім») </h5>
+                        <button class="showAdv">Подробнее</button>
+                        <span class="descriptionAdv">Програмований терморегулятор з WiFi управлінням, представляють-дають можливість регулювати систему опалення з будь-якої точки земної кулі і при цьому економити до 40% на електроенергії  </span>
                     </li>
-                    <li class="widthBlock">
-                        <div class="image"><img src="img/bonus.png" alt=""></div>
-                        <div class="description">
-                            <h5>Приятные бонусы для постоянных клиентов </h5>
-                            <ul class="list_">
-                                <li>
-                                    <img src="img/list_dots.png" alt="">
-                                    <span>Скидка 500 грн. <p style="color:white">при повторном обращении</p></span>
-
-                                </li>
-                                <li>
-                                    <img src="img/list_dots.png" alt="">
-                                    <span>Акция <p style="color:white">«Приведи друга — получи подарок!» </p></span>
-
-                                </li>
-                            </ul>
-
-                        </div>
+                    <li>
+                        <div class="img"><img src="img/heater.png" alt=""></div>
+                        <h5>Можливість обігріву вашої квартири, будинку, балкону, терасси, підвалу, дачі </h5>
+                        <button class="showAdv">Подробнее</button>
+                        <span class="descriptionAdv">Максимальна температура обігріву повітря без батарей – 35 градусів (для сауни до 90 градусів) </span>
+                    </li>
+                    <li>
+                        <div class="img"><img src="img/floor.png" alt=""></div>
+                        <h5>Можливість зовнішнього обігріву і антиобледеніння </h5>
+                        <button class="showAdv">Подробнее</button>
+                        <span class="descriptionAdv">Може використовуватись для обігріву саду, грунту, тротуарів, доріг, дахів, водостоків, труб і т.д. </span>
+                    </li>
+                    <li>
+                        <div class="img"><img src="img/floor (1).png" alt=""></div>
+                        <h5>Під будь яке підлогове покриття </h5>
+                        <button class="showAdv">Подробнее</button>
+                        <span class="descriptionAdv">Під плитку, паркет, доску, ламінат, лінолеум, ковролін, наливну підлогу, мікроцемент  </span>
+                    </li>
+                    <li>
+                        <div class="img"><img src="img/pig.png" alt=""></div>
+                        <h5>Економія 30-40% на вартості опалення </h5>
+                        <button class="showAdv">Подробнее</button>
+                        <span class="descriptionAdv">Витрати електроенергії – 30-40 Вт/м2, це менше звичайної лампочки! В місяць при постійному включенні приблизно – 37 грн. </span>
+                    </li>
+                    <li>
+                        <div class="img"><img src="img/temperature.png" alt=""></div>
+                        <h5>Високоефективне опалювальне обладнання </h5>
+                        <button class="showAdv">Подробнее</button>
+                        <span class="descriptionAdv">Опалювальні системи нових поколінь можуть використовуватись як основне або додаткове опалення. </span>
                     </li>
                 </ul>
-                <div class="callback">
-                    <input type="text" placeholder="Ваш телефон">
-                    <button><a href="#ex2" rel="modal:open">Узнать подробности</a></button>
-                </div>
+                <h4>УНІКАЛЬНА ПРОПОЗІЦИЯ ВІД КОМПАНІЇ ELITTEPLO!</h4>
+                <p>Подібних умов вам не запропонує ні одна інша компанія! </p>
                 <div class="hot_shares">
-                    <h5>При покупке теплого пола — термостат в подарок</h5>
+                    <h5>Установка і підключення теплої підлоги <span>+</span></h5>
+                    <h5>програмований WiFi терморегулятор<span>в подарунок!</span></h5>
                     <div class="counter">
                         <div class="hour">
-                            <p>Внимание! Количество акционных программируемых WiFi регуляторов ограничено</p>
-                            <div class="text">Осталось
+                            <p>Увага! Кількість акційних програмованих WiFi регуляторів обмежена </p>
+                            <div class="text">Залишилось
                                 <div class="count">
                                     12
                                 </div>
-                                терморегуляторов
+                                терморегуляторів
                             </div>
                         </div>
                         <img src="img/termo.jpg" alt="">
                     </div>
                     <div class="callback">
-                        <input type="text" placeholder="Ваш телефон">
-                        <button>Забронировать подарок</button>
+                        <form action="" onsubmit="return false">
+                            <input id='phoneCards' autocomplete="off" required/>
+                            <button class="esc">
+                                <div class="bg_b"></div>
+                                <a href="#ex3" id="clearIn" rel="modal:open">Отримати подарунок </a>
+                            </button>
+                        </form>
                     </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cooperation">
+    <div class="container">
+        <h2>Напряму співпрацюємо з кращими світовими брендами </h2>
+        <ul class="card">
+            <li>
+                <img src="img/devi.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/nexans.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/arnold_rak.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/hemstedt.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/fenix.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/raychem.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/odescabel.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/grand_meyer.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/rexva.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/caleo.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/heat_plus.png" alt="">
+            </li>
+
+            <li>
+                <img src="img/daewoo.png" alt="">
+            </li>
+
+        </ul>
+
+        <ul class="mobile_card">
+            <div>
+                <div class="content">
+                    <li>
+                        <img src="img/devi.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/nexans.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/arnold_rak.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/hemstedt.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/fenix.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/raychem.png" alt="">
+                    </li>
+                </div>
+            </div>
+
+            <div>
+                <div class="content">
+                    <li>
+                        <img src="img/odescabel.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/grand_meyer.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/rexva.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/caleo.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/heat_plus.png" alt="">
+                    </li>
+
+                    <li>
+                        <img src="img/daewoo.png" alt="">
+                    </li>
+                </div>
+            </div>
+
+        </ul>
+        <div class="sale">
+            <div class="partner">
+                <div class="head">
+                    <div class="lider">
+                        <p>Лідер</p>
+                        <p>продажів</p>
+                    </div>
+                    <div class="sale_procent">
+                        <p> -20%</p>
+                    </div>
+                </div>
+                <div class="logo_company"><img src="img/heat_tech.png" alt=""></div>
+                <div class="flag_country"><img src="img/usa.png" alt=""></div>
+            </div>
+            <div class="partner">
+                <div class="head">
+                    <div class="lider">
+                        <p>Лідер</p>
+                        <p>продажів</p>
+                    </div>
+                    <div class="sale_procent">
+                        <p> -20%</p>
+                    </div>
+                </div>
+                <div class="logo_company"><img src="img/schwarz.png" alt=""></div>
+                <div class="flag_country"><img src="img/germany.png" alt=""></div>
+            </div>
+        </div>
+        <div class="callback">
+            <form action="" onsubmit="return false">
+                <input id='phoneMore' style="color: #fff" autocomplete="off" required/>
+                <button class="esc">
+                    <div class="bg_b"></div>
+                    <a href="#ex3" id="clearIn" rel="modal:open">Докладніше</a>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="recomendation" id="recomendation">
+
+        <div class="container">
+            <h2>Чому нас рекомендують рідним і друзям: </h2>
+            <h2>наші пропозиції, акції, знижки </h2>
+            <ul class="content">
+                <li>
+                    <div class="image"><img src="img/money_box.png" alt=""></div>
                     <div class="description">
-                        <p>Термостат необходим для регулировки пола и экономии электроэнергиию</p>
-                        <p>Качественный програмируемый термостат с WIFI управлением стоит минимум 1400 гривен.</p>
-                        <p>А вы получите абсолютно бесплатно!</p>
+                        <h5>Найкращі ціни в Україні </h5>
+                        <p>Вартість теплої підлоги – <b>від 14 грн/метр! </b> Ви економите до 40% в порівнянні з
+                            пропозиціями інших компаній</p>
                     </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <section class="calculator">
-        <div class="container">
-            <div class="title">
-                <img src="img/check.png" alt="">
-                <h1>Сделайте дом теплее </h1>
-                <h2>и навсегда избавьтесь от сырости и плесени</h2>
-
-            </div>
-            <div class="main">
-                <h2 id="hrefCalc">
-                    калькулятор теплого пола онлайн
-                </h2>
-                <form action="">
-                    <p class="calc__group--input">Тип помещения:</p>
-                    <div class="calc__group--input">
-                        <input id="1" class="firstOption" type="radio" name="test1" value="0">
-                        <label for="1">дом/офис/ квартира </label>
-
-                        <input id="2" class="firstOption" type="radio" name="test1" value="105">
-                        <label for="2">терраса/беседка/ балкон </label>
-
-                        <input id="3" class="firstOption" type="radio" name="test1" value="250">
-                        <label for="3">дорога/тротуар/ наружные ступеньки </label>
-
-                        <input id="4" class="firstOption" type="radio" name="test1" value="251">
-                        <label for="4">труба/водосток/ крыша </label>
-                    </div>
-                    <a class="calc__group--input" id="btnOnCalc">Калькулятор теплого пола</a>
-                    <p class="calc__group--input offCalc secondOption">Использование:</p>
-                    <div class="calc__group--input offCalc secondOption">
-                        <input id="5" class="secOption" type="radio" name="test2" value="0">
-                        <label for="5">основное отопление </label>
-
-                        <input id="6" class="secOption" type="radio" name="test2" value="165">
-                        <label for="6">подогрев для комфорта </label>
-
-                        <input id="7" class="secOption" type="radio" name="test2" value="260">
-                        <label for="7">антиобледенение </label>
-                    </div>
-                    <p class="calc__group--input offCalc thirdOption">Покрытие пола:</p>
-                    <div class="calc__group--input offCalc thirdOption">
-                        <input id="8" class="thOption" type="radio" name="test3" value="0">
-                        <label for="8">черновая стяжка </label>
-
-                        <input id="9" class="thOption" type="radio" name="test3" value="185">
-                        <label for="9">чистовая стяжка </label>
-                    </div>
-                    <p class="calc__group--input offCalc fourthOption">Площадь</p>
-                    <div class="area offCalc fourthOption">
-                        <input type="text" class="fOption" name="area" placeholder="50м">
-                    </div>
-                    <p class="calc__group--input offCalc fivesOption">Тип напольного покрытия:</p>
-                    <div class="calc__group--input offCalc fivesOption">
-                        <input id="10" class="fiOption" type="radio" name="test4" value="0">
-                        <label for="10">ламинат (паркетная доска) </label>
-
-                        <input id="11" class="fiOption" type="radio" name="test4" value="195">
-                        <label for="11">линолеум (ковролин, кварц-виниловая ПВХ плитка) </label>
-
-                        <input id="12" class="fiOption" type="radio" name="test4" value="290">
-                        <label for="12">плитка (керамогранит, камень, наливной пол) </label>
-                    </div>
-                    <p class="calc__group--input offCalc sixOption">Качество:</p>
-                    <div class="calc__group--input offCalc sixOption">
-                        <input id="13" class="sOption" type="radio" name="test5" value="0">
-                        <label for="13">эконом</label>
-
-                        <input id="14" class="sOption" type="radio" name="test5" value="125">
-                        <label for="14">средний</label>
-
-                        <input id="15" class="sOption" type="radio" name="test5" value="300">
-                        <label for="15">цена-качество</label>
-
-                        <input id="16" class="sOption" type="radio" name="test5" value="301">
-                        <label for="16">премиум</label>
-                    </div>
-                    <p class="calc__group--input offCalc sevenOption">Терморегулятор:</p>
-                    <div class="calc__group--input offCalc sevenOption">
-                        <input id="17" type="radio" name="test6" value="0">
-                        <label for="17">электромеханический </label>
-
-                        <input id="18" type="radio" name="test6" value="115">
-                        <label for="18">программируемый </label>
-
-                        <input id="19" type="radio" name="test6" value="310">
-                        <label for="19">программируемый сенсорный </label>
-
-                        <input id="20" type="radio" name="test6" value="311">
-                        <label for="20">программируемый с Wifi управлением </label>
-                    </div>
-                </form>
-
-                <div class="butList">
-                    <button class="resultCalc offCalc sevenOption"><a href="#ex1" rel="modal:open">Показать
-                            результаты</a>
-                    </button>
-                    <button id="btnOffCalc" style="display: none;">Закрыть</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="select_floor">
-        <div class="container">
-            <h2>Выберите теплый пол </h2>
-
-            <div class="swiper-filter">
-                <div>
-                    <a data-filter=".mats" class="filterLink ">Нагревательные маты</a>
-                    <a data-filter=".cable" class="filterLink ">Нагревательный кабель</a>
-                    <a data-filter=".film" class="filterLink ">Инфракрасная пленка</a>
-                    <a data-filter=".regulator" class="filterLink ">Регуляторы и комплектующие</a>
-                    <a data-filter=".water_floor" class="filterLink ">Водяной теплый пол</a>
-                </div>
-
-                <div>
-                    <p>Терморегуляторы:</p>
-                    <a data-filter=".mech" class="filterLink ">механические</a>
-                    <a data-filter=".elec" class="filterLink ">электронные</a>
-                    <a data-filter=".prog" class="filterLink ">программируемые с WiFi</a>
-                </div>
-
-            </div>
-            <div class="sliderM">
-                <div class="swiper-container swiper-product">
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide mech">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-                        <div class="swiper-slide elec">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-                        <div class="swiper-slide prog">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mats">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide cable">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide film">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide regulator">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide water_floor">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide mats">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide cable">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide film">
-                            <div class="content">
-                                <img src="img/heating_mats_system.jpg" alt="">
-                                <h5>Нагревательный мат под плитку</h5>
-                                <p>Украина, 150 Вт/м2</p>
-                                <span>Тонкий мат с двухжильным нагревательным кабелем, применяется для монтажа систем
-                                    “теплый пол” в различных помещениях.</span>
-                                <input type="text" placeholder="Ваш телефон">
-                                <button>Купить</button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </div>
-
-        <div class="special_conditions">
-
-            <div class="container">
-                <h2>Специальные условия и цены</h2>
-                <h2>для оптовиков, монтажников, прорабов, плиточников, строителей и т.д.</h2>
-                <p>Заполните форму и мы вышлем видеоинструкцию монтажа на Viber, Telegram, WhatsApp</p>
-                <div class="callback">
-                    <input type="text" placeholder="Ваш телефон">
-                    <button>Получить видео</button>
-                </div>
-
-                <p>Или пишите нам в Viber, Telegram, WhatsApp </p>
-                <div class="social">
-                    <a href="#" class="viber"><img src="img/viber_icon.png" alt="">viber</a>
-                    <a href="#" class="telegram"><img src="img/telegram_icon.png" alt="">telegram</a>
-                    <a href="#" class="whatsapp"><img src="img/whatsapp_icon.png" alt="">whatsapp</a>
-                </div>
-                <div class="hot_shares">
-                    <h5>Установка и подключение теплого пола <span>+</span> </h5>
-                    <h5>программируемый WiFi терморегулятор <span>в подарок!</span> </h5>
-                    <div class="counter">
-                        <div class="hour">
-                            <p>Только до 29.10.2020</p>
-
-                            <ul class="timer">
-                                <li>
-                                    <div class="border">
-                                        <h4>
-                                            <div id="daysT" class="days_1">0</div>
-                                        </h4>
-                                    </div>
-
-                                    <span>дней</span>
-                                </li>
-                                <li>
-                                    <div class="border">
-                                        <h4>
-                                            <div id="hrsT" class="hours_1">0</div>
-                                        </h4>
-                                    </div>
-                                    <span>часов</span>
-                                </li>
-                                <li>
-                                    <div class="border">
-                                        <h4>
-                                            <div id="minT" class="minutes_1">0</div>
-                                        </h4>
-                                    </div>
-                                    <span>минут</span>
-                                </li>
-                                <li>
-                                    <div class="border">
-                                        <h4>
-                                            <div id="secT" class="seconds_1">0</div>
-                                        </h4>
-                                    </div>
-                                    <span>секунд</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <img src="img/termo.jpg" alt="">
-                    </div>
-                    <div class="callback">
-                        <input type="text" placeholder="Ваш телефон">
-                        <button>Заказать консультацию</button>
-                    </div>
-                </div>
-            </div>
-            <p>Обычная цена монтажа пола <b>от 2000грн</b> и цена программируемого терморегулятора с WiFi управлением
-                <b>от 1400грн</b> </p>
-        </div>
-    </section>
-
-    <section class="clean_installation">
-        <div class="container">
-            <h2>Чистый монтаж</h2>
-            <p>Установим теплые полы без пыли и грязи — сэкономим ваши силы и время, </p>
-            <p class="color">подарим приятные эмоции</p>
-            <div class="content">
-                <div class="image"><img src="img/install_man.png" alt=""></div>
-                <div class="description">
-                    <p> Высоко квалифицированные монтажники, прошедшие специальное обучение у производителей теплого
-                        пола и имеющие все необходимые сертификаты и допуски, <span>бережно доставят и аккуратно
-                            установят теплый пол уже в день заказа.</span>
-                    </p>
-                    <h5>Все сертификаты монтажников и на продукцию:</h5>
-
-                </div>
-
-            </div>
-            <div class="sertificate">
-                <div>
-                    <div class="content image__wrapper">
-                        <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения" />
-                    </div>
-                </div>
-                <div>
-                    <div class="content image__wrapper">
-                        <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения" />
-                    </div>
-                </div>
-                <div>
-                    <div class="content image__wrapper">
-                        <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения" />
-                    </div>
-                </div>
-                <div>
-                    <div class="content image__wrapper">
-                        <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения" />
-                    </div>
-                </div>
-                <div>
-                    <div class="content image__wrapper">
-                        <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения" />
-                    </div>
-                </div>
-                <div>
-                    <div class="content image__wrapper">
-                        <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="callback">
-                <input type="text" placeholder="Ваш телефон">
-                <button>Заказать консультацию</button>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="about_us">
-        <div class="container">
-            <h2>Несколько слов о нас</h2>
-            <p>Почему вы можете быть уверены, что останетесь довольны теплым полом и его монтажом</p>
-            <ul>
-                <li>
-                    <img src="img/tools-and-utensils (1).png" alt="">
-                    <h4>16 лет</h4>
-                    <p>успешной работы на рынке систем отопления Украины с 2004 г.</p>
                 </li>
                 <li>
-                    <img src="img/men.png" alt="">
-                    <h4>200+</h4>
-                    <p>дилеров и представителей, по всей Украине </p>
+                    <div class="image"><img src="img/builder.png" alt=""></div>
+                    <div class="description">
+                        <h5>Безкоштовний монтаж і підключення </h5>
+                        <p><b>Зекономте до 50%! </b> Саме стільки, по статистиці, складає вартість установки і
+                            підключення теплої підлоги у тих конкурентів, які пропонують монтаж.
+                        </p>
+                    </div>
                 </li>
                 <li>
-                    <img src="img/automation.png" alt="">
-                    <h4>3500 000+ <span>м<sup>2</sup></span>
-                    </h4>
+                    <div class="image"><img src="img/delivery.png" alt=""></div>
+                    <div class="description">
+                        <h5>Швидка безкоштовна доставка </h5>
+                        <p><b>Впродовж 1 доби, без передплати,</b> доставимо систему обігріву в будь-який регіон України
+                            – навіть у віддалені населені пункти </p>
+                    </div>
+                </li>
+                <li class="widthBlock">
+                    <div class="image"><img src="img/bonus.png" alt=""></div>
+                    <div class="description">
+                        <h5>Приємні бонуси для постійних клієнтів </h5>
+                        <ul class="list_">
+                            <li>
+                                <img src="img/list_dots.png" alt="">
+                                <span>Знижка 500 грн.  <p style="color:white">при повторному зверненні.</p></span>
 
-                    <p>теплых электрических полов установлено</p>
-                </li>
-                <li>
-                    <img src="img/communications.png" alt="">
-                    <h4>31 000</h4>
-                    <p>довольных клиентов</p>
-                </li>
-                <li>
-                    <img src="img/man-avatar.png" alt="">
-                    <h4>100+</h4>
-                    <p>квалифицированных сотрудников, решающих ваши индивидуальные задачи
-                    </p>
-                </li>
-                <li>
-                    <img src="img/signs.png" alt="">
-                    <h4>1 800+ <span>объектов</span>
-                    </h4>
+                            </li>
+                            <li>
+                                <img src="img/list_dots.png" alt="">
+                                <span>Акція <p style="color:white">«Приведи друга – отримай подарунок!» </p></span>
 
-                    <p>обслуживаем в год</p>
+                            </li>
+                        </ul>
+
+                    </div>
                 </li>
             </ul>
-        </div>
-
-        <div class="asked_questions">
-            <div class="container">
-                <h2>Часто задаваемые вопросы </h2>
-                <div class="asked ask">
-                    <div class="border_ask">
-                        <h4>?</h4>
-                    </div>
-                    <div class="desc">
-                        <p>Боится ли пол воды?</p>
-                        <div class="answer">Нет, не боится. Можно монтировать даже в душевой кабине</div>
-                    </div>
-
-                    <div class="arrow">
-                        <div></div>
-                        <div></div>
-                    </div>
-
-                </div>
-                <div class="asked1 ask">
-                    <div class="border_ask">
-                        <h4>?</h4>
-                    </div>
-                    <div class="desc">
-
-                        <p>Эффективен ли обогрев?</p>
-                        <div class="answer1">Нет, не боится. Можно монтировать даже в душевой кабине</div>
-                    </div>
-                    <div class="arrow">
-                        <div></div>
-                        <div></div>
-                    </div>
-
-                </div>
-                <div class="asked2 ask">
-                    <div class="border_ask">
-                        <h4>?</h4>
-                    </div>
-                    <div class="desc">
-                        <p>Проработает ли пол 25 лет?</p>
-                        <div class="answer2">Нет, не боится. Можно монтировать даже в душевой кабине</div>
-                    </div>
-
-                    <div class="arrow">
-                        <div></div>
-                        <div></div>
-                    </div>
-
-                </div>
-                <div class="asked3 ask askToggle">
-                    <div class="content">
-                        <div class="border_ask">
-                            <h4>?</h4>
-                        </div>
-                        <div class="desc">
-                            <p>Возможно ли с его помощью утеплять стены?</p>
-                            <div class="answer3">Нет, не боится. Можно монтировать даже в душевой кабине</div>
-                        </div>
-
-                        <div class="arrow">
-                            <div></div>
-                            <div></div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="asked4 ask askToggle">
-                    <div class="content">
-                        <div class="border_ask">
-                            <h4>?</h4>
-                        </div>
-                        <div class="desc">
-                            <p>Можно ли ремонтировать теплый пол?</p>
-                            <div class="answer4">Нет, не боится. Можно монтировать даже в душевой кабине</div>
-                        </div>
-
-                        <div class="arrow">
-                            <div></div>
-                            <div></div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="asked5 ask askToggle">
-                    <div class="content">
-                        <div class="border_ask">
-                            <h4>?</h4>
-                        </div>
-                        <div class="desc">
-                            <p>Боится ли теплый пол мороза?</p>
-                            <div class="answer5">Нет, не боится. Можно монтировать даже в душевой кабине</div>
-                        </div>
-
-                        <div class="arrow">
-                            <div></div>
-                            <div></div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="asked6 ask askToggle">
-                    <div class="content">
-                        <div class="border_ask">
-                            <h4>?</h4>
-                        </div>
-                        <div class="desc">
-                            <p>Влияет ли теплый пол на здоровья людей?</p>
-                            <div class="answer6">Нет, не боится. Можно монтировать даже в душевой кабине</div>
-                        </div>
-
-                        <div class="arrow">
-                            <div></div>
-                            <div></div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="asked7 ask askToggle">
-                    <div class="content">
-                        <div class="border_ask">
-                            <h4>?</h4>
-                        </div>
-                        <div class="desc">
-                            <p>Можно ли получить специальный тариф на электроэнергию?</p>
-                            <div class="answer7">Нет, не боится. Можно монтировать даже в душевой кабине</div>
-                        </div>
-
-                        <div class="arrow">
-                            <div></div>
-                            <div></div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <button id="ask">Больше вопросов</button>
-
-                <button id="askOff" style="display: none;">Меньше вопросов</button>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="customer_opinion">
-        <div class="container">
-            <h2>мнение заказчиков</h2>
-            <div class="responsives">
-
-                <div>
-                    <div class="content">
-                        <img src="img/user.png" alt="">
-                        <h5>Андрей Качан</h5>
-                        <span>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев
-                            более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык
-                            публичных выступлений в домашних условиях.<b> При создании генератора мы использовали
-                                небезизвестный универсальный код речей. </b></span>
-                        <a href="#" class="social">
-                            <img src="img/facebook-logo.png" alt="">
-                            <span>Страничка Facebook</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="content">
-                        <img src="img/user.png" alt="">
-                        <h5>Андрей Качан</h5>
-                        <span>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев
-                            более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык
-                            публичных выступлений в домашних условиях.<b> При создании генератора мы использовали
-                                небезизвестный универсальный код речей. </b></span>
-                        <a href="#" class="social">
-                            <img src="img/facebook-logo.png" alt="">
-                            <span>Страничка Facebook</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="content">
-                        <img src="img/user.png" alt="">
-                        <h5>Андрей Качан</h5>
-                        <span>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев
-                            более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык
-                            публичных выступлений в домашних условиях.<b> При создании генератора мы использовали
-                                небезизвестный универсальный код речей. </b></span>
-                        <a href="#" class="social">
-                            <img src="img/facebook-logo.png" alt="">
-                            <span>Страничка Facebook</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="content">
-                        <img src="img/user.png" alt="">
-                        <h5>Андрей Качан</h5>
-                        <span>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев
-                            более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык
-                            публичных выступлений в домашних условиях.<b> При создании генератора мы использовали
-                                небезизвестный универсальный код речей. </b></span>
-                        <a href="#" class="social">
-                            <img src="img/facebook-logo.png" alt="">
-                            <span>Страничка Facebook</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="content">
-                        <img src="img/user.png" alt="">
-                        <h5>Андрей Качан</h5>
-                        <span>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев
-                            более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык
-                            публичных выступлений в домашних условиях.<b> При создании генератора мы использовали
-                                небезизвестный универсальный код речей. </b></span>
-                        <a href="#" class="social">
-                            <img src="img/facebook-logo.png" alt="">
-                            <span>Страничка Facebook</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="content">
-                        <img src="img/user.png" alt="">
-                        <h5>Андрей Качан</h5>
-                        <span>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев
-                            более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык
-                            публичных выступлений в домашних условиях.<b> При создании генератора мы использовали
-                                небезизвестный универсальный код речей. </b></span>
-                        <a href="#" class="social">
-                            <img src="img/facebook-logo.png" alt="">
-                            <span>Страничка Facebook</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="callback">
+                <form action="" onsubmit="return false">
+                    <input id='phoneMore1' style="color: #fff" autocomplete="off" required/>
+                    <button class="esc">
+                        <div class="bg_b"></div>
+                        <a href="#ex3" id="clearIn" rel="modal:open">Дізнатись подробиці</a>
+                    </button>
+                </form>
             </div>
             <div class="hot_shares">
-                <h5>Установка и подключение теплого пола <span>+</span></h5>
-                <h5>программируемый WiFi терморегулятор <span>в подарок!</span></h5>
+                <h5>При купівлі теплої підлоги – термостат в подарунок </h5>
                 <div class="counter">
                     <div class="hour">
-                        <p>Только до 29.10.2020</p>
+                        <p>Увага! Кількість акційних WiFi регуляторів обмежено </p>
+                        <div class="text">Залишилось
+                            <div class="count">
+                                12
+                            </div>
+                            терморегуляторів
+                        </div>
+                    </div>
+                    <img src="img/termo.jpg" alt="">
+                </div>
+                <div class="callback">
+                    <form action="" onsubmit="return false">
+                        <input id='present' autocomplete="off" required/>
+                        <button class="esc">
+                            <div class="bg_b"></div>
+                            <a href="#ex2" id="clearIn" rel="modal:open">Зарезервувати подарунок</a>
+                        </button>
+                    </form>
+                </div>
+                <div class="description">
+                    <p>Термостат необхідний для регулювання пола і економії електроенергії. </p>
+                    <p>Якісний програмований термостат з WiFi управлінням коштує мінімум 1400 гривень. </p>
+                    <p>А ви отримаєте його абсолютно безкоштовно! </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="calculator">
+    <div class="container">
+        <div class="title">
+            <img src="img/check.png" alt="">
+            <h1>Зробіть свій будинок теплішим </h1>
+            <h2>і назавжди позбудьтеся від вологості та цвілі!</h2>
+
+        </div>
+        <div class="main">
+            <h2 id="hrefCalc">
+                калькулятор теплої підлоги онлайн
+            </h2>
+            <form action="" onsubmit="return false">
+                <p class="calc__group--input">Тип приміщення:</p>
+                <div class="calc__group--input">
+                    <input id="1" class="firstOption" type="radio" name="test1" value="0">
+                    <label for="1">будинок / офіс / квартира </label>
+
+                    <input id="2" class="firstOption" type="radio" name="test1" value="105">
+                    <label for="2">тераса / альтанка / балкон </label>
+
+                    <input id="3" class="firstOption" type="radio" name="test1" value="250">
+                    <label for="3">дорога / тротуар / зовнішні сходи </label>
+
+                    <input id="4" class="firstOption" type="radio" name="test1" value="251">
+                    <label for="4">труба / водостік / дах </label>
+                </div>
+                <a class="calc__group--input" id="btnOnCalc">Калькулятор теплої підлоги</a>
+                <p class="calc__group--input offCalc secondOption">Використання:</p>
+                <div class="calc__group--input offCalc secondOption">
+                    <input id="5" class="secOption" type="radio" name="test2" value="0">
+                    <label for="5">основне опалення </label>
+
+                    <input id="6" class="secOption" type="radio" name="test2" value="165">
+                    <label for="6">підігрів для комфорту </label>
+
+                    <input id="7" class="secOption" type="radio" name="test2" value="260">
+                    <label for="7">антиобледеніння </label>
+                </div>
+                <p class="calc__group--input offCalc thirdOption">Покриття підлоги:</p>
+                <div class="calc__group--input offCalc thirdOption">
+                    <input id="8" class="thOption" type="radio" name="test3" value="0">
+                    <label for="8">чорнова стяжка </label>
+
+                    <input id="9" class="thOption" type="radio" name="test3" value="185">
+                    <label for="9">чистова стяжка </label>
+                </div>
+                <p class="calc__group--input offCalc fourthOption">Площа</p>
+                <div class="area offCalc fourthOption">
+                    <input type="number" class="fOption" pattern="^[ 0-9]+$" name="area" placeholder="50м">
+                </div>
+                <p class="calc__group--input offCalc fivesOption">Тип підлогового покриття:</p>
+                <div class="calc__group--input offCalc fivesOption">
+                    <input id="10" class="fiOption" type="radio" name="test4" value="0">
+                    <label for="10">ламінат (паркетна дошка) </label>
+
+                    <input id="11" class="fiOption" type="radio" name="test4" value="195">
+                    <label for="11">лінолеум (ковролін, кварц-вінілова ПВХ плитка) </label>
+
+                    <input id="12" class="fiOption" type="radio" name="test4" value="290">
+                    <label for="12">плитка (керамограніт, камінь, наливна підлога) </label>
+                </div>
+                <p class="calc__group--input offCalc sixOption">Якість:</p>
+                <div class="calc__group--input offCalc sixOption">
+                    <input id="13" class="sOption" type="radio" name="test5" value="0">
+                    <label for="13">економ</label>
+
+                    <input id="14" class="sOption" type="radio" name="test5" value="125">
+                    <label for="14">середня</label>
+
+                    <input id="15" class="sOption" type="radio" name="test5" value="300">
+                    <label for="15">ціна-якість</label>
+
+                    <input id="16" class="sOption" type="radio" name="test5" value="301">
+                    <label for="16">преміум</label>
+                </div>
+                <p class="calc__group--input offCalc sevenOption">Терморегулятор:</p>
+                <div class="calc__group--input offCalc sevenOption">
+                    <input id="17" type="radio" name="test6" value="0">
+                    <label for="17">електромеханічний </label>
+
+                    <input id="18" type="radio" name="test6" value="115">
+                    <label for="18">програмований </label>
+
+                    <input id="19" type="radio" name="test6" value="310">
+                    <label for="19">програмований сенсорний </label>
+
+                    <input id="20" type="radio" name="test6" value="311">
+                    <label for="20">програмований с Wifi керуванням </label>
+                </div>
+            </form>
+
+            <div class="butList">
+                <button class="resultCalc offCalc sevenOption"><a style="width: 100%; height: 100%" href="#ex1"
+                                                                  rel="modal:open">Показати результати</a>
+                </button>
+                <button id="btnOffCalc" style="display: none;">Закрити</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="select_floor" id="select_floor">
+    <div class="container">
+        <h2>Виберіть теплу підлогу </h2>
+
+        <div class="swiper-filter">
+            <div>
+                <a data-filter=".mats" class="filterLink ">Нагрівальні мати</a>
+                <a data-filter=".cable" class="filterLink ">Нагрівальний кабель</a>
+                <a data-filter=".film" class="filterLink ">Інфрачервона плівка</a>
+                <a data-filter=".regulator" class="filterLink ">Регулятори і комплектуючі</a>
+                <a data-filter=".water_floor" class="filterLink ">Водяна тепла підлога</a>
+            </div>
+
+            <div>
+                <p>Терморегулятори:</p>
+                <a data-filter=".mech" class="filterLink ">механічні</a>
+                <a data-filter=".elec" class="filterLink ">електронні</a>
+                <a data-filter=".prog" class="filterLink ">програмовані с WiFi</a>
+            </div>
+
+        </div>
+        <div class="sliderM">
+            <div class="swiper-container swiper-product">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide mech">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="swiper-slide elec">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="swiper-slide prog">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="swiper-slide mats">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide cable">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide film">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide regulator">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide water_floor">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide mats">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide cable">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide film">
+                        <div class="content">
+                            <img src="img/heating_mats_system.jpg" alt="">
+                            <h5>Нагрівальний мат під плитку</h5>
+                            <p>Україна, 150 Вт/м2</p>
+                            <span>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних приміщеннях.</span>
+                            <form action="" onsubmit="return false">
+                                <button><a href="#ex4" rel="modal:open">Докладніше</a></button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+
+    <div class="special_conditions">
+
+        <div class="container">
+            <h2>Спеціальні умови та ціни </h2>
+            <h2>для оптовиків, монтажників, прорабів, виконробів, плиточників, будівельників і т.д. </h2>
+            <p>Заповніть форму і ми надішлемо відеоінструкцію монтажу на Viber, Telegram, Whatsapp. </p>
+            <div class="callback">
+                <form action="" onsubmit="return false">
+                    <input id='video' style="color: #fff" autocomplete="off" required/>
+                    <button class="esc">
+                        <div class="bg_b"></div>
+                        <a href="#ex3" id="clearIn" rel="modal:open">Отримати відео</a>
+                    </button>
+                </form>
+            </div>
+
+            <p>Або пишіть нам в Viber, Telegram, WhatsApp </p>
+            <div class="social">
+                <a href="#" class="viber"><img src="img/viber_icon.png" alt="">viber</a>
+                <a href="#" class="telegram"><img src="img/telegram_icon.png" alt="">telegram</a>
+                <a href="#" class="whatsapp"><img src="img/whatsapp_icon.png" alt="">whatsapp</a>
+            </div>
+            <div class="hot_shares">
+                <h5>Установка і підключення теплої підлоги <span>+</span></h5>
+                <h5>програмований WiFi терморегулятор <span>в подарунок!</span></h5>
+                <div class="counter">
+                    <div class="hour">
+                        <p>Тільки до 29.10.2020</p>
 
                         <ul class="timer">
                             <li>
                                 <div class="border">
                                     <h4>
-                                        <div id="daysS" class="days_1">0</div>
+                                        <div id="daysT" class="days_1">0</div>
                                     </h4>
                                 </div>
 
-                                <span>дней</span>
+                                <span>днів</span>
                             </li>
                             <li>
                                 <div class="border">
                                     <h4>
-                                        <div id="hrsS" class="hours_1">0</div>
+                                        <div id="hrsT" class="hours_1">0</div>
                                     </h4>
                                 </div>
-                                <span>часов</span>
+                                <span>годин</span>
                             </li>
                             <li>
                                 <div class="border">
                                     <h4>
-                                        <div id="minS" class="minutes_1">0</div>
+                                        <div id="minT" class="minutes_1">0</div>
                                     </h4>
                                 </div>
-                                <span>минут</span>
+                                <span>хвилин</span>
                             </li>
                             <li>
                                 <div class="border">
                                     <h4>
-                                        <div id="secS" class="seconds_1">0</div>
+                                        <div id="secT" class="seconds_1">0</div>
                                     </h4>
                                 </div>
                                 <span>секунд</span>
@@ -1393,211 +1191,1014 @@
                     <img src="img/termo.jpg" alt="">
                 </div>
                 <div class="callback">
-                    <input type="text" placeholder="Ваш телефон">
-                    <button>Заказать консультацию</button>
+                    <form action="" onsubmit="return false">
+                        <input id='phone1' autocomplete="off" required/>
+                        <button class="esc">
+                            <div class="bg_b"></div>
+                            <a href="#ex3" id="clearIn" rel="modal:open">Замовити консультацію</a>
+                        </button>
+                    </form>
                 </div>
             </div>
-            <div class="low_price">
-                <p>
-                    ПОЛУЧИТЕ ТЕПЛЫЙ ПОЛ ПО САМЫМ НИЗКИМ ЦЕНАМ В УКРАИНЕ*
+        </div>
+        <p>Звичайна ціна монтажу підлоги <b>від 2000 грн. </b>Ціна програмованого WiFi терморегулятора - <b>від
+            1400грн.</b></p>
+    </div>
+</section>
+
+<section class="clean_installation">
+    <div class="container">
+        <h2>Чистий монтаж</h2>
+        <p>Встановимо теплу підлогу без пилу і бруду – заощадимо ваші сили і час, </p>
+        <p class="color">подаруємо приємні емоції.</p>
+        <div class="content">
+            <div class="image"><img src="img/install_man.png" alt=""></div>
+            <div class="description">
+                <p> Високо кваліфіковані монтажники, які пройшли спеціальне навчання у виробників теплої підлоги і мають всі необхідні сертифікати і допуски, <span>дбайливо доставлять і акуратно встановлять теплу підлогу вже в день замовлення.</span>
                 </p>
-                <p>Обычная цена монтажа пола <b>от 2000грн</b> и цена программируемого терморегулятора с WiFi
-                    управлением
-                    <b>от 1400грн</b></p>
+                <h5>Все сертификаты монтажников и на продукцию:</h5>
+
             </div>
 
         </div>
-
-        <div class="completed_projects">
-
-            <div class="container">
-                <h2>реализованые проекты</h2>
-                <div class="completed_projects_slider">
-
-                    <div>
-                        <div class="content">
-                            <img src="img/img_slide1.png" alt="">
-                            <h5>Проект многоэтажного дома</h5>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="content">
-                            <img src="img/img_slide2.png" alt="">
-                            <h5>Проект многоэтажного дома</h5>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="content">
-                            <img src="img/img_slide3.png" alt="">
-                            <h5>Проект многоэтажного дома</h5>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="content">
-                            <img src="img/img_slide1.png" alt="">
-                            <h5>Проект многоэтажного дома</h5>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="content">
-                            <img src="img/img_slide2.png" alt="">
-                            <h5>Проект многоэтажного дома</h5>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="content">
-                            <img src="img/img_slide3.png" alt="">
-                            <h5>Проект многоэтажного дома</h5>
-                        </div>
-                    </div>
-
+        <div class="sertificate">
+            <div>
+                <div class="content image__wrapper">
+                    <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения"/>
+                </div>
+            </div>
+            <div>
+                <div class="content image__wrapper">
+                    <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения"/>
+                </div>
+            </div>
+            <div>
+                <div class="content image__wrapper">
+                    <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения"/>
+                </div>
+            </div>
+            <div>
+                <div class="content image__wrapper">
+                    <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения"/>
+                </div>
+            </div>
+            <div>
+                <div class="content image__wrapper">
+                    <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения"/>
+                </div>
+            </div>
+            <div>
+                <div class="content image__wrapper">
+                    <img src="img/sertificate.jpg" class="minimized" alt="клик для увеличения"/>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="stages_cooperation">
-        <div class="container">
-            <h2>этапы сотрудничества</h2>
-            <img class="mob_stages" src="img/mob_stages.png" alt="">
-            <ul>
-                <li>
-                    <img src="img/communications1.png" alt="">
-                    <p>Вы звоните нам </p>
-                </li>
-                <img src="img/arrow.png" alt="">
-                <li>
-                    <img src="img/business.png" alt="">
-                    <p>Мы Вас консультируем</p>
-                </li>
-                <img src="img/arrow.png" alt="">
-                <li>
-                    <img src="img/ecology.png" alt="">
-                    <p>Подбираем нужный вариант теплого пола</p>
-                </li>
-                <img src="img/arrow.png" alt="">
-                <li>
-                    <img src="img/edit_tools.png" alt="">
-                    <p>Делаем бесплатный монтаж-подключение </p>
-                </li>
-                <img src="img/arrow.png" alt="">
-                <li>
-                    <img src="img/enjoying.png" alt="">
-                    <p>Вы наслаждаетесь результатом</p>
-                </li>
-
-            </ul>
-
-        </div>
-
-        <div class="our_guarantees">
-            <div class="container">
-                <h2>наши гарантии</h2>
-                <div class="guaranteed">
-                    <img src="img/guaranteed.png" alt="">
-                    <p><b> Полная гарантия </b> от завода на теплый пол — если в период действия полной гарантии
-                        произойдет гарантийный случай, то производитель <b>обязуется отремонтировать не только теплый
-                            пол, но и
-                            напольное покрытие</b></p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="call_us">
-        <div class="container">
-            <div class="image"><img src="img/map.png" alt=""></div>
-            <div class="content">
-                <h2>звоните нам!</h2>
-                <p>МОНТИРУЕМ И ПОДКЛЮЧАЕМ ТЕПЛЫЙ ПОЛ В ЛЮБОЙ ТОЧКЕ УКРАИНЫ
-                </p>
-                <span>Работаем круглосуточно и без выходных</span>
-                <div class="tel">
-                    <img src="img/interface.png" alt="">
-                    <div class="nomers">
-                        <p>+3 8(099) 678-00-00</p>
-                        <p>+3 8(099) 678-00-00</p>
-                        <p>+3 8(099) 678-00-00</p>
-                    </div>
-                </div>
-                <span>Или оставьте заявку, мы перезвоним вам в течение 15 минут</span>
-                <div class="callback">
-                    <input type="text" placeholder="Ваш телефон">
-                    <button>Заказать консультацию</button>
-                </div>
-                <span>Или пишите нам в</span>
-                <div class="social">
-                    <a href="#" class="viber"><img src="img/viber_icon.png" alt="">viber</a>
-                    <a href="#" class="telegram"><img src="img/telegram_icon.png" alt="">telegram</a>
-                    <a href="#" class="whatsapp"><img src="img/whatsapp_icon.png" alt="">whatsapp</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="line"></div>
-            <p>©2020. All Rights Reserved</p>
-        </div>
-    </footer>
-
-    <!-- Modal HTML embedded directly into document -->
-
-    <div id="ex1" class="modal">
-        <a href="#close-modal" rel="modal:close" class="closeModal">
-            <div></div>
-            <div></div>
-        </a>
         <div class="callback">
-            <img src="img/heating_mats_system.jpg" alt="">
-            <input type="text" placeholder="Ваш телефон">
-            <button>Заказать</button>
+            <form action="" onsubmit="return false">
+                <input id='phone2' autocomplete="off" required/>
+                <button class="esc">
+                    <div class="bg_b"></div>
+                    <a href="#ex3" id="clearIn" rel="modal:open">Замовити консультацію</a>
+                </button>
+            </form>
         </div>
-        <div class="result">
-            <h5>Нагреваемый мат под плитку</h5>
-            <div class="resultCalc">от
-                <div id="summ">0</div>
-                грн/м
+
+    </div>
+</section>
+
+<section class="about_us" id="about_us">
+    <div class="container">
+        <h2>Кілька слів про нас</h2>
+        <p>Чому ви можете бути впевнені, що залишитеся задоволені теплою підлогою і його монтажем</p>
+        <ul>
+            <li>
+                <img src="img/tools-and-utensils (1).png" alt="">
+                <h4>16 років</h4>
+                <p>успішної роботи на ринку систем опалення України з 2004р.</p>
+            </li>
+            <li>
+                <img src="img/men.png" alt="">
+                <h4>200+</h4>
+                <p>дилерів і представників, по всій Україні.
+                </p>
+            </li>
+            <li>
+                <img src="img/automation.png" alt="">
+                <h4>3500 000+ <span>м<sup>2</sup></span>
+                </h4>
+
+                <p>теплих електричних підлог встановлено.</p>
+            </li>
+            <li>
+                <img src="img/communications.png" alt="">
+                <h4>31 000</h4>
+                <p>задоволених клієнтів</p>
+            </li>
+            <li>
+                <img src="img/man-avatar.png" alt="">
+                <h4>100+</h4>
+                <p>кваліфікованих співробітників,
+                    які вирішують ваші індивідуальні завдання.
+                </p>
+            </li>
+            <li>
+                <img src="img/signs.png" alt="">
+                <h4>1 800+ <span>об'єктів</span>
+                </h4>
+
+                <p>обслуговуємо за рік</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="asked_questions">
+        <div class="container">
+            <h2>Часто задавані питання </h2>
+            <div class="asked ask">
+                <div class="border_ask">
+                    <h4>?</h4>
+                </div>
+                <div class="desc">
+                    <p>Чи боїться підлога води?</p>
+                    <div class="answer">Ні, не боїться. Можна монтувати навіть у душовій кабіні.</div>
+                </div>
+
+                <div class="arrow">
+                    <div></div>
+                    <div></div>
+                </div>
+
             </div>
-            <p>Тонкий мат с двужильным нагревательным кабелем, применяется для монтажа систем “теплый пол” в рапзличных
-                помещениях. Не требует стяжки, утеплителя и монтажной ленты. Применяется и как основной источник тепла и
-                как дополнительный. </p>
+            <div class="asked1 ask">
+                <div class="border_ask">
+                    <h4>?</h4>
+                </div>
+                <div class="desc">
+
+                    <p>Чи ефективний обігрів?</p>
+                    <div class="answer1">Максимальна температура обігріву повітря без батарей - 35 градусів. При цьому
+                        підлогу прогрівається до 50 градусів
+                    </div>
+                </div>
+                <div class="arrow">
+                    <div></div>
+                    <div></div>
+                </div>
+
+            </div>
+            <div class="asked2 ask">
+                <div class="border_ask">
+                    <h4>?</h4>
+                </div>
+                <div class="desc">
+                    <p>Чи пропрацює підлога 25 років?</p>
+                    <div class="answer2">Насправді середній термін роботи теплої підлоги - понад 50 років. Зрозуміло,
+                        якщо обійдеться без потопів і землетрусів
+                    </div>
+                </div>
+
+                <div class="arrow">
+                    <div></div>
+                    <div></div>
+                </div>
+
+            </div>
+            <div class="asked3 ask askToggle">
+                <div class="content">
+                    <div class="border_ask">
+                        <h4>?</h4>
+                    </div>
+                    <div class="desc">
+                        <p>Чи можливо з його допомогою утеплювати стіни?</p>
+                        <div class="answer3">Так можливо</div>
+                    </div>
+
+                    <div class="arrow">
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="asked4 ask askToggle">
+                <div class="content">
+                    <div class="border_ask">
+                        <h4>?</h4>
+                    </div>
+                    <div class="desc">
+                        <p>Чи можна ремонтувати теплу підлогу?</p>
+                        <div class="answer4">Так, теплу підлогу можна відремонтувати, не знімаючи всього підлогового
+                            покриття. Але пошкодити його не так-то й просто – особисто у нас таких випадків не було.
+                        </div>
+                    </div>
+
+                    <div class="arrow">
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="asked5 ask askToggle">
+                <div class="content">
+                    <div class="border_ask">
+                        <h4>?</h4>
+                    </div>
+                    <div class="desc">
+                        <p>Чи боїться тепла підлога морозу?</p>
+                        <div class="answer5">Ні, не боїться. ЇЇ можна монтувати на вулиці або на дачі, де можна хоч на
+                            місяць все відключитися.
+                        </div>
+                    </div>
+
+                    <div class="arrow">
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="asked6 ask askToggle">
+                <div class="content">
+                    <div class="border_ask">
+                        <h4>?</h4>
+                    </div>
+                    <div class="desc">
+                        <p>Чи впливає тепла підлога на здоров'я людей?</p>
+                        <div class="answer6">Ні не впливає. Тепла підлога не шкодить здоров'ю людини, це доведено
+                            багатьма міжнародними дослідженнями. А за рахунок екранування кабелю – немає ніяких ЕРС.
+                        </div>
+                    </div>
+
+                    <div class="arrow">
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="asked7 ask askToggle">
+                <div class="content">
+                    <div class="border_ask">
+                        <h4>?</h4>
+                    </div>
+                    <div class="desc">
+                        <p>Чи можна отримати спеціальний тариф на електроенергію?</p>
+                        <div class="answer7">Так, звернувшись в вашу енергомережу, ви зможете отримати спец.таріф на
+                            електроенергію
+                        </div>
+                    </div>
+
+                    <div class="arrow">
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="asked8 ask askToggle">
+                <div class="content">
+                    <div class="border_ask">
+                        <h4>?</h4>
+                    </div>
+                    <div class="desc">
+                        <p>На яку висоту встановлювати терморегулятор?</p>
+                        <div class="answer8">На будь-яку, зручну для вас висоту.</div>
+                    </div>
+
+                    <div class="arrow">
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button id="ask">Більше запитань</button>
+
+            <button id="askOff" style="display: none;">Менше запитань</button>
+
+        </div>
+    </div>
+</section>
+
+<section class="customer_opinion" id="customer_opinion">
+    <div class="container">
+        <h2>Відгуки замовників</h2>
+        <div class="responsives">
+
+            <div>
+                <div class="content">
+                    <img src="img/user.png" alt="">
+                    <h5>Андрій Качан</h5>
+                    <span>Сайт рибатекст допоможе дизайнеру, верстальщику, вебмайстру згенерувати кілька абзаців більш менш осмисленого тексту риби російською мовою, а початківцю оратору відточити навик публічних виступів в домашніх умовах.<b> При створенні генератора ми використовували відомий універсальний код промов.</b></span>
+                    <a href="#" class="social">
+                        <img src="img/facebook-logo.png" alt="">
+                        <span>Сторінка Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="content">
+                    <img src="img/user.png" alt="">
+                    <h5>Андрій Качан</h5>
+                    <span>Сайт рибатекст допоможе дизайнеру, верстальщику, вебмайстру згенерувати кілька абзаців більш менш осмисленого тексту риби російською мовою, а початківцю оратору відточити навик публічних виступів в домашніх умовах.<b> При створенні генератора ми використовували відомий універсальний код промов.</b></span>
+                    <a href="#" class="social">
+                        <img src="img/facebook-logo.png" alt="">
+                        <span>Сторінка Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="content">
+                    <img src="img/user.png" alt="">
+                    <h5>Андрій Качан</h5>
+                    <span>Сайт рибатекст допоможе дизайнеру, верстальщику, вебмайстру згенерувати кілька абзаців більш менш осмисленого тексту риби російською мовою, а початківцю оратору відточити навик публічних виступів в домашніх умовах.<b> При створенні генератора ми використовували відомий універсальний код промов.</b></span>
+                    <a href="#" class="social">
+                        <img src="img/facebook-logo.png" alt="">
+                        <span>Сторінка Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="content">
+                    <img src="img/user.png" alt="">
+                    <h5>Андрій Качан</h5>
+                    <span>Сайт рибатекст допоможе дизайнеру, верстальщику, вебмайстру згенерувати кілька абзаців більш менш осмисленого тексту риби російською мовою, а початківцю оратору відточити навик публічних виступів в домашніх умовах.<b> При створенні генератора ми використовували відомий універсальний код промов.</b></span>
+                    <a href="#" class="social">
+                        <img src="img/facebook-logo.png" alt="">
+                        <span>Сторінка Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="content">
+                    <img src="img/user.png" alt="">
+                    <h5>Андрій Качан</h5>
+                    <span>Сайт рибатекст допоможе дизайнеру, верстальщику, вебмайстру згенерувати кілька абзаців більш менш осмисленого тексту риби російською мовою, а початківцю оратору відточити навик публічних виступів в домашніх умовах.<b> При створенні генератора ми використовували відомий універсальний код промов.</b></span>
+                    <a href="#" class="social">
+                        <img src="img/facebook-logo.png" alt="">
+                        <span>Сторінка Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="content">
+                    <img src="img/user.png" alt="">
+                    <h5>Андрій Качан</h5>
+                    <span>Сайт рибатекст допоможе дизайнеру, верстальщику, вебмайстру згенерувати кілька абзаців більш менш осмисленого тексту риби російською мовою, а початківцю оратору відточити навик публічних виступів в домашніх умовах.<b> При створенні генератора ми використовували відомий універсальний код промов.</b></span>
+                    <a href="#" class="social">
+                        <img src="img/facebook-logo.png" alt="">
+                        <span>Сторінка Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hot_shares">
+            <h5>Установка і підключення теплої підлоги <span>+</span></h5>
+            <h5>програмований WiFi терморегулятор<span>в подарунок!</span></h5>
+            <div class="counter">
+                <div class="hour">
+                    <p>Тільки до 29.10.2020</p>
+
+                    <ul class="timer">
+                        <li>
+                            <div class="border">
+                                <h4>
+                                    <div id="daysS" class="days_1">0</div>
+                                </h4>
+                            </div>
+
+                            <span>днів</span>
+                        </li>
+                        <li>
+                            <div class="border">
+                                <h4>
+                                    <div id="hrsS" class="hours_1">0</div>
+                                </h4>
+                            </div>
+                            <span>годин</span>
+                        </li>
+                        <li>
+                            <div class="border">
+                                <h4>
+                                    <div id="minS" class="minutes_1">0</div>
+                                </h4>
+                            </div>
+                            <span>хвилин</span>
+                        </li>
+                        <li>
+                            <div class="border">
+                                <h4>
+                                    <div id="secS" class="seconds_1">0</div>
+                                </h4>
+                            </div>
+                            <span>секунд</span>
+                        </li>
+                    </ul>
+                </div>
+                <img src="img/termo.jpg" alt="">
+            </div>
+            <div class="callback">
+                <form action="" onsubmit="return false">
+                    <input id='phone3' autocomplete="off" required/>
+                    <button class="esc">
+                        <div class="bg_b"></div>
+                        <a href="#ex3" id="clearIn" rel="modal:open">Замовити консультацію</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="low_price">
+            <p>
+                ОТРИМАЙТЕ ТЕПЛУ ПІДЛОГУ ЗА НАЙНИЖЧИМИ ЦІНАМИ В УКРАЇНІ *
+            </p>
+            <p>Звичайна ціна монтажу підлоги <b>від 2000 грн.</b> Ціна програмованого WiFi терморегулятора -
+                <b>від 1400грн.</b></p>
         </div>
 
     </div>
 
-    <div id="ex2" class="modal">
-        <a href="#close-modal" rel="modal:close" class="closeModal">
-            <div></div>
-            <div></div>
-        </a>
-        <h2>Получить купон на скидку 1000 грн </h2>
-        <img src="img/sertificate_popup.jpg" alt="">
-        <div class="callback">
-            <input type="text" placeholder="Ваш телефон">
-            <input type="text" placeholder="Ваша почта">
-            <button>Заказать консультацию</button>
+    <div class="completed_projects" id="completed_projects">
+
+        <div class="container">
+            <h2>Реалізовані проекти</h2>
+            <div class="completed_projects_slider">
+
+                <div>
+                    <div class="content">
+                        <img src="img/img_slide1.png" alt="">
+                        <h5>Проєкт багатоповерхової будівлі</h5>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="content">
+                        <img src="img/img_slide2.png" alt="">
+                        <h5>Проєкт багатоповерхової будівлі</h5>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="content">
+                        <img src="img/img_slide3.png" alt="">
+                        <h5>Проєкт багатоповерхової будівлі</h5>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="content">
+                        <img src="img/img_slide1.png" alt="">
+                        <h5>Проєкт багатоповерхової будівлі</h5>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="content">
+                        <img src="img/img_slide2.png" alt="">
+                        <h5>Проєкт багатоповерхової будівлі</h5>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="content">
+                        <img src="img/img_slide3.png" alt="">
+                        <h5>Проєкт багатоповерхової будівлі</h5>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
+</section>
 
-    <script src="js/slick.js" type="text/javascript" charset="utf-8"></script>
+<section class="stages_cooperation">
+    <div class="container">
+        <h2>Етапи співпраці</h2>
+        <img class="mob_stages" src="img/mob_stages.png" alt="">
+        <ul>
+            <li>
+                <img src="img/communications1.png" alt="">
+                <p>Ви телефонуєте нам </p>
+            </li>
+            <img src="img/arrow.png" alt="">
+            <li>
+                <img src="img/business.png" alt="">
+                <p>Ми Вас консультуємо</p>
+            </li>
+            <img src="img/arrow.png" alt="">
+            <li>
+                <img src="img/ecology.png" alt="">
+                <p>Підбираємо потрібний варіант теплої підлоги</p>
+            </li>
+            <img src="img/arrow.png" alt="">
+            <li>
+                <img src="img/edit_tools.png" alt="">
+                <p>Робимо безкоштовний монтаж-підключення </p>
+            </li>
+            <img src="img/arrow.png" alt="">
+            <li>
+                <img src="img/enjoying.png" alt="">
+                <p>Ви насолоджуєтесь результатом</p>
+            </li>
 
-    <script src="js/script.js"></script>
+        </ul>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.6/js/swiper.min.js"></script>
+    <div class="our_guarantees">
+        <div class="container">
+            <h2>Наші гарантії</h2>
+            <div class="guaranteed">
+                <img src="img/guaranteed.png" alt="">
+                <p><b> Повна гарантія </b> від заводу на теплу підлогу - якщо в період дії повної гарантії відбудеться
+                    гарантійний випадок, то виробник <b>зобов'язується відремонтувати не тільки теплу підлогу, але і
+                        підлогове покриття.</b></p>
+            </div>
 
-    <script src="js/main.js"></script>
+        </div>
+    </div>
+</section>
+
+<section class="call_us">
+    <div class="container">
+        <div class="image">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.9862384641638!2d30.54531047983493!3d50.44135699009478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cfaf542eb109%3A0xf8654ed97f07054!2z0IbQv9GB0LjQu9Cw0L3RgtGW0ZfQstGB0YzQutC40Lkg0L_RgNC-0LLRg9C70L7QuiwgMywg0JrQuNGX0LIsIDAyMDAw!5e0!3m2!1suk!2sua!4v1623524032385!5m2!1suk!2sua"
+                    width="600" height="400" style="border:0;" allowfullscreen="true" loading="lazy"></iframe>
+            <!--            <img src="img/map.png" alt="">-->
+        </div>
+        <div class="content">
+            <h2>ТЕЛЕФОНУЙТЕ НАМ!</h2>
+            <p>МОНТУЄМО І ПІДКЛЮЧАЄМО ТЕПЛУ ПІДЛОГУ В БУДЬ-ЯКІЙ ТОЧЦІ УКРАЇНИ
+            </p>
+            <span>Працюємо цілодобово та без вихідних</span>
+            <div class="tel">
+                <img src="img/interface.png" alt="">
+                <div class="nomers">
+                    <a href="tel:+380996780000" style="text-decoration: none;
+        color: #000000;"><p>+3 8(099) 678-00-00</p></a>
+                    <a href="tel:+380996780000" style="text-decoration: none;
+        color: #000000;"><p>+3 8(099) 678-00-00</p></a>
+                    <a href="tel:+380996780000" style="text-decoration: none;
+        color: #000000;"><p>+3 8(099) 678-00-00</p></a>
+                </div>
+            </div>
+            <span>Або залиште заявку, ми зателефонуємо вам протягом 15 хвилин</span>
+            <div class="callback">
+                <form action="" onsubmit="return false">
+                    <input id='phone4' autocomplete="off" required/>
+                    <button class="esc">
+                        <div class="bg_b"></div>
+                        <a href="#ex3" id="clearIn" rel="modal:open">Залишити заявку</a>
+                    </button>
+                </form>
+            </div>
+            <span>Або пишіть нам в</span>
+            <div class="social">
+                <a href="#" class="viber"><img src="img/viber_icon.png" alt="">viber</a>
+                <a href="#" class="telegram"><img src="img/telegram_icon.png" alt="">telegram</a>
+                <a href="#" class="whatsapp"><img src="img/whatsapp_icon.png" alt="">whatsapp</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="line"></div>
+        <p>Elit Teplo – 2014-2020</p>
+    </div>
+</footer>
+
+<!-- Modal HTML embedded directly into document -->
+
+<div id="ex1" class="modal">
+    <a href="#close-modal" rel="modal:close" class="closeModal">
+        <div></div>
+        <div></div>
+    </a>
+    <div class="callback">
+        <img src="img/heating_mats_system.jpg" alt="">
+        <form action="" onsubmit="return false">
+            <input id='Calc' autocomplete="off" required/>
+            <button class="esc">
+                <div class="bg_b"></div>
+                <a href="#ex3" id="clearIn" rel="modal:open">Замовити</a>
+            </button>
+        </form>
+    </div>
+    <div class="result">
+        <h5>Нагріваючий мат під плитку</h5>
+        <div class="resultCalc">от
+            <div id="summ">0</div>
+            грн/м
+        </div>
+        <p>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних
+            приміщеннях. Не вимагає стяжки, утеплювача і монтажної стрічки. Застосовується і як основне джерело тепла і як
+            додатковий.</p>
+    </div>
+
+</div>
+
+<div id="ex2" class="modal">
+    <a href="#close-modal" rel="modal:close" class="closeModal">
+        <div></div>
+        <div></div>
+    </a>
+    <h2>Отримати купон на знижку 1000 грн </h2>
+    <img src="img/sertificate_popup.jpeg" alt="">
+    <div class="callback">
+        <form action="" onsubmit="return false">
+            <input id='Sert' autocomplete="off" required/>
+            <button class="esc">
+                <div class="bg_b"></div>
+                <a href="#ex3" id="clearIn" rel="modal:open">Замовити консультацію</a>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div id="ex3" class="modal">
+    <a href="#close-modal" rel="modal:close" class="closeModal">
+        <div></div>
+        <div></div>
+    </a>
+    <h5>Дякуємо! Наш менеджер скоро вам зателефонує.</h5>
+</div>
+
+<div id="ex4" class="modal">
+    <a href="#close-modal" rel="modal:close" class="closeModal">
+        <div></div>
+        <div></div>
+    </a>
+    <div class="callback">
+        <img src="img/heating_mats_system.jpg" alt="">
+        <form action="" onsubmit="return false">
+            <input id='Prod' autocomplete="off" required/>
+            <button class="esc">
+                <div class="bg_b"></div>
+                <a href="#ex3" id="clearIn" rel="modal:open">Замовити</a>
+            </button>
+        </form>
+    </div>
+    <div class="result">
+        <h5>Нагріваючий мат під плитку</h5>
+        <div class="resultCalc">от
+            <div id="summ">0</div>
+            грн/м
+        </div>
+        <p>Тонкий мат з двожильним нагрівальним кабелем, застосовується для монтажу систем "тепла підлога" в різних
+            приміщеннях. Не вимагає стяжки, утеплювача і монтажної стрічки. Застосовується і як основне джерело тепла і як
+            додатковий.</p>
+    </div>
+
+</div>
+
+<div id="myModal" class="modals">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h5>Дякуємо! Наш менеджер скоро вам зателефонує.</h5>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+<script>
+    // let modal = document.getElementById('myModal');
+    // let span = document.getElementsByClassName("close")[0];
+    //
+    // span.onclick = function () {
+    //     modal.style.display = "none";
+    // }
+    //
+    // window.onclick = function (event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // }
+    //
+    // $('.calc__group--input').click(function () {
+    //     $('#btnOffCalc').show(300);
+    // })
+
+
+</script>
+
+<script src="js/slick.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="js/script.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.6/js/swiper.min.js"></script>
+
+<script src="js/main.js"></script>
+
+<script src="js/jquery.maskedinput.min.js"></script>
+
+<script>
+    $.fn.setCursorPosition = function (pos) {
+        if ($(this).get(0).setSelectionRange) {
+            $(this).get(0).setSelectionRange(pos, pos);
+        } else if ($(this).get(0).createTextRange) {
+            let range = $(this).get(0).createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+        }
+    };
+
+    jQuery(function ($) {
+        $('#phone').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phone").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+
+        $('#phonePr').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phonePr").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phonePr1').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phonePr1").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phonePr2').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phonePr2").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phonePr3').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phonePr3").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phonePr4').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phonePr4").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phonePr5').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phonePr5").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#expert').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#expert").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phoneCards').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phoneCards").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phoneMore').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phoneMore").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phoneMore1').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phoneMore1").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#present').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#present").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#video').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#video").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phone1').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phone1").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phone2').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phone2").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phone3').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phone3").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#phone4').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#phone4").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+
+        $('#Calc').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#Calc").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#Sert').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#Sert").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+        $('#Prod').click(function () {
+            $(this).setCursorPosition(5);
+        }).mask('+38 (999) 999-99-99');
+
+        $("#Prod").on('keyup', function () {
+            if (this.value.replace(/[_-]/g, '').length === 17) {
+                $('.bg_b').hide(300)
+            } else {
+                $('.bg_b').show(300)
+            }
+        });
+
+        $('#clearIn').click(function () {
+            $('#phone').val('');
+            $('.bg_b').show(300)
+        });
+    });
+
+
+    // let phone = $('#phones').val();
+    //
+    // if (phone.length > 10) {
+    //     $('#myBtn').click(function () {
+    //         $('#myModal').css('display', 'block');
+    //     })
+    // }
+
+</script>
+
+<script>
+    let col = 2;
+    let date = new Date();
+    let dayWeek = [7, 1, 2, 3, 4, 5, 6][date.getDay()];
+    switch (dayWeek) {
+        case 1:
+            $('.count').html(col * 42);
+            break;
+        case 2:
+            $('.count').html(col * 35);
+            break;
+        case 3:
+            $('.count').html(col * 28);
+            break;
+        case 4:
+            $('.count').html(col * 21);
+            break;
+        case 5:
+            $('.count').html(col * 14);
+            break;
+        case 6:
+            $('.count').html(col * 7);
+            break;
+        case 7:
+            $('.count').html(col);
+            break;
+        default:
+            $('.count').html(col);
+    }
+
+    $(window).scroll(function () {
+
+        if ($(this).scrollTop() > 0) {
+            $('#menu-bar, .nav').removeClass('change');
+            $('.menu-bg').removeClass('change-bg');
+        }
+    });
+</script>
+
 
 </body>
 

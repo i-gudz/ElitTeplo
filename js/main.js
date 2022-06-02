@@ -43,3 +43,12 @@ $(document).ready(function () {
         }
     })
 });
+
+// $(".filterLink").one('click', function () {
+//     $('html,body').animate({scrollTop: $(".sliderM").offset().top - 350}, 'slow');
+// });
+
+// $(".filterLink").click(function () {
+//         $('html,body').animate({scrollTop: $(".sliderM").offset().top - 370}, 'slow');
+//     }
+// )

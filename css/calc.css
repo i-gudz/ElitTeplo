@@ -6,13 +6,13 @@
     margin-bottom: 5px;
     padding-top: 3px;
     cursor: pointer;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .control input {
     position: absolute;
     z-index: -1;
-    opacity: 0
+    opacity: 0;
 }
 
 .control_indicator {
@@ -21,47 +21,46 @@
     left: 0;
     height: 20px;
     width: 20px;
-    background: #fff;
-    border: 2px solid #fff;
-    border-radius: undefinedpx
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: undefinedpx;
 }
 
-.control input:focus~.control_indicator,
-.control:hover input~.control_indicator {
-    background: #fff;
-    border: 2px solid red
+.control:hover input~.control_indicator,
+.control input:focus~.control_indicator {
+    background: #ffffff;
+    border: 2px solid #ff0000;
 }
 
 .control input:checked~.control_indicator {
-    background: #fff;
-    border: 2px solid red
+    background: #ffffff;
+    border: 2px solid #ff0000;
 }
 
-.control input:checked:focus~.control_indicator,
-.control:hover input:not([disabled]):checked~.control_indicator {
-    background: #fff
+.control:hover input:not([disabled]):checked~.control_indicator,
+.control input:checked:focus~.control_indicator {
+    background: #ffffff;
 }
 
 .control input:disabled~.control_indicator {
     background: #e6e6e6;
-    opacity: .6;
-    pointer-events: none
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .control_indicator:after {
-    -webkit-box-sizing: unset;
     box-sizing: unset;
     content: '';
     position: absolute;
-    display: none
+    display: none;
 }
 
 .control input:checked~.control_indicator:after {
-    display: block
+    display: block;
 }
 
 .control-radio .control_indicator {
-    border-radius: 50%
+    border-radius: 50%;
 }
 
 .control-radio .control_indicator:after {
@@ -70,16 +69,12 @@
     height: 14px;
     width: 14px;
     border-radius: 50%;
-    background: -webkit-gradient(linear, left top, left bottom, from(#e1234f), to(#f38215));
-    background: -o-linear-gradient(top, #e1234f 0, #f38215 100%);
-    background: linear-gradient(180deg, #e1234f 0, #f38215 100%);
-    -webkit-transition: background 250ms;
-    -o-transition: background 250ms;
-    transition: background 250ms
+    background: linear-gradient(180deg, rgba(225, 35, 79, 1) 0%, rgba(243, 130, 21, 1) 100%);
+    transition: background 250ms;
 }
 
 .control-radio input:disabled~.control_indicator:after {
-    background: #7b7b7b
+    background: #7b7b7b;
 }
 
 .control-radio .control_indicator::before {
@@ -94,103 +89,45 @@
     margin-top: -1.3rem;
     background: #2aa1c0;
     border-radius: 3rem;
-    opacity: .6;
+    opacity: 0.6;
     z-index: 99999;
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0)
-}
-
-@-webkit-keyframes s-ripple {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0);
-        transform: scale(0)
-    }
-
-    20% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
-
-    100% {
-        opacity: .01;
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
+    transform: scale(0);
 }
 
 @keyframes s-ripple {
     0% {
         opacity: 0;
-        -webkit-transform: scale(0);
-        transform: scale(0)
+        transform: scale(0);
     }
-
     20% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
+        transform: scale(1);
     }
-
     100% {
-        opacity: .01;
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
-}
-
-@-webkit-keyframes s-ripple-dup {
-    0% {
-        -webkit-transform: scale(0);
-        transform: scale(0)
-    }
-
-    30% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
-
-    60% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
-
-    100% {
-        opacity: 0;
-        -webkit-transform: scale(1);
-        transform: scale(1)
+        opacity: 0.01;
+        transform: scale(1);
     }
 }
 
 @keyframes s-ripple-dup {
     0% {
-        -webkit-transform: scale(0);
-        transform: scale(0)
+        transform: scale(0);
     }
-
     30% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
+        transform: scale(1);
     }
-
     60% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
+        transform: scale(1);
     }
-
     100% {
         opacity: 0;
-        -webkit-transform: scale(1);
-        transform: scale(1)
+        transform: scale(1);
     }
 }
 
 .control-radio input+.control_indicator::before {
-    -webkit-animation: s-ripple 250ms ease-out;
-    animation: s-ripple 250ms ease-out
+    animation: s-ripple 250ms ease-out;
 }
 
 .control-radio input:checked+.control_indicator::before {
-    -webkit-animation-name: s-ripple-dup;
-    animation-name: s-ripple-dup
+    animation-name: s-ripple-dup;
 }

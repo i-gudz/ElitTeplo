@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding:0;
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .windowSize div,
+        .screenSize div{
+            display: flex;
+            flex-direction:row;
+            margin-top: 10px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Размер окна браузера</h2>
+    <div class="windowSize">
+        <div>
+            <div>width:</div><div id="widthSize"></div>
+        </div>
+        <div>
+            <div>height:</div><div id="heightSize"></div>
+        </div>
+
+    </div>
+    <h2>Размер окна сайта</h2>
+    <div class="screenSize">
+        <div>
+            <div>width:</div><div id="widthScreen"></div>
+        </div>
+        <div>
+            <div>height:</div><div id="heightScreen"></div>
+        </div>
+
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        const windowOuterWidth = window.outerWidth
+        const windowOuterHeight = window.outerHeight
+        const windowInnerWidth = window.innerWidth
+        const windowInnerHeight = window.innerHeight
+        $('#widthSize').html(windowOuterWidth);
+        $('#heightSize').html(windowOuterHeight);
+        $('#widthScreen').html(windowInnerWidth);
+        $('#heightScreen').html(windowInnerHeight);
+    </script>
+</body>
+</html>

@@ -9,6 +9,11 @@
     transition: .5s
 }
 
+button:hover {
+    transition: .3s;
+    cursor: pointer
+}
+
 .container {
     width: 1170px;
     margin: auto
@@ -49,8 +54,39 @@ header {
 
 header .logo {
     position: absolute;
-    left: 7%
+    left: 7%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
+header .logo .lang {
+    color: #fff;
+    display: block !important;
+}
+
+header .logo .lang a {
+    color: #fff;
+    text-decoration: none;
+    transition: .3s
+}
+
+header .logo .lang .active {
+    font-weight: bold;
+    font-size: 19px;
+}
+
+header .logo .lang a:hover {
+    transition: .3s;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+
+header .logo img {
+    margin-right: 15px;
+}
+
 
 header .social {
     position: absolute;
@@ -76,7 +112,8 @@ header .nav ul {
 
 header .nav ul li {
     margin-right: 30px;
-    position: relative
+    position: relative;
+    transition: .3s
 }
 
 header .nav ul li:last-child {
@@ -94,7 +131,7 @@ header .nav ul li a {
 }
 
 header .nav ul li:hover {
-    cursor: pointer
+    cursor: pointer;
 }
 
 header .nav ul li:hover a {
@@ -104,9 +141,10 @@ header .nav ul li:hover a {
 header .nav ul li img {
     display: none;
     position: absolute;
-    top: -60px;
+    top: -40px;
     left: -40px;
-    width: 110px
+    width: 110px;
+    z-index: -1;
 }
 
 header .nav ul li:nth-child(2) img {
@@ -122,7 +160,7 @@ header .nav ul li:nth-child(5) img {
     left: -20px;
     height: 105px;
     width: 160px;
-    top: -55px;
+    top: -40px;
     left: -20px
 }
 
@@ -238,8 +276,8 @@ header .social .phone a span {
 
 .shares .container h1,
 .shares .container h2 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 72px;
     line-height: 72px;
     text-align: center;
@@ -303,7 +341,7 @@ header .social .phone a span {
     margin-right: 10px
 }
 
-.shares .container>p {
+.shares .container > p {
     font-size: 24px;
     font-family: 'Gotham Pro';
     font-weight: 400;
@@ -409,8 +447,8 @@ header .social .phone a span {
     align-items: center;
     width: 100px;
     height: 100px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 48px;
     color: #e1234f;
     background-color: #fff;
@@ -448,7 +486,6 @@ header .social .phone a span {
     width: 270px;
     height: 40px;
     border: none;
-    background-color: none
 }
 
 .shares .container .hot_shares .callback input {
@@ -506,13 +543,18 @@ header .social .phone a span {
     font-family: 'Gotham Pro';
     font-weight: 400;
     text-align: center;
-    background-color: #df1359
+    background-color: #df1359;
 }
 
-.shares .container>h4 {
+.shares .container .hot_shares .callback button a {
+    text-decoration: none;
+    color: #fff
+}
+
+.shares .container > h4 {
     margin: 25px 0 10px 0;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -524,7 +566,7 @@ header .social .phone a span {
     color: #e1234f
 }
 
-.shares>p {
+.shares > p {
     color: #fff;
     font-size: 24px;
     font-family: 'Gotham Pro';
@@ -533,10 +575,10 @@ header .social .phone a span {
     padding-bottom: 55px
 }
 
-.what_gender .container>h2 {
+.what_gender .container > h2 {
     margin: 50px 0 38px 0;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -618,6 +660,7 @@ header .social .phone a span {
     border-bottom-right-radius: 20px
 }
 
+
 .what_gender .container .card li .accordion1 {
     bottom: -47%
 }
@@ -673,6 +716,17 @@ header .social .phone a span {
     -ms-flex-align: center;
     align-items: center;
     padding: 0 35px
+}
+
+.what_gender .container .accordion .callback form,
+.what_gender .container .accordion1 .callback form,
+.what_gender .container .accordion2 .callback form,
+.what_gender .container .accordion3 .callback form,
+.what_gender .container .accordion4 .callback form,
+.what_gender .container .accordion5 .callback form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .accordion .callback input,
@@ -760,58 +814,6 @@ header .social .phone a span {
     color: #7e7e7e
 }
 
-.accordion .callback input::-webkit-input-placeholder,
-.accordion1 .callback input::-webkit-input-placeholder,
-.accordion2 .callback input::-webkit-input-placeholder,
-.accordion3 .callback input::-webkit-input-placeholder,
-.accordion4 .callback input::-webkit-input-placeholder,
-.accordion5 .callback input::-webkit-input-placeholder {
-    font-size: 14px;
-    font-family: 'Gotham Pro';
-    font-weight: 300;
-    font-style: italic;
-    color: #7e7e7e
-}
-
-.accordion .callback input::-moz-placeholder,
-.accordion1 .callback input::-moz-placeholder,
-.accordion2 .callback input::-moz-placeholder,
-.accordion3 .callback input::-moz-placeholder,
-.accordion4 .callback input::-moz-placeholder,
-.accordion5 .callback input::-moz-placeholder {
-    font-size: 14px;
-    font-family: 'Gotham Pro';
-    font-weight: 300;
-    font-style: italic;
-    color: #7e7e7e
-}
-
-.accordion .callback input:-ms-input-placeholder,
-.accordion1 .callback input:-ms-input-placeholder,
-.accordion2 .callback input:-ms-input-placeholder,
-.accordion3 .callback input:-ms-input-placeholder,
-.accordion4 .callback input:-ms-input-placeholder,
-.accordion5 .callback input:-ms-input-placeholder {
-    font-size: 14px;
-    font-family: 'Gotham Pro';
-    font-weight: 300;
-    font-style: italic;
-    color: #7e7e7e
-}
-
-.accordion .callback input::-ms-input-placeholder,
-.accordion1 .callback input::-ms-input-placeholder,
-.accordion2 .callback input::-ms-input-placeholder,
-.accordion3 .callback input::-ms-input-placeholder,
-.accordion4 .callback input::-ms-input-placeholder,
-.accordion5 .callback input::-ms-input-placeholder {
-    font-size: 14px;
-    font-family: 'Gotham Pro';
-    font-weight: 300;
-    font-style: italic;
-    color: #7e7e7e
-}
-
 .accordion .callback input::placeholder,
 .accordion1 .callback input::placeholder,
 .accordion2 .callback input::placeholder,
@@ -841,7 +843,7 @@ header .social .phone a span {
     background-color: #df1359
 }
 
-.what_gender .container .card li>button {
+.what_gender .container .card li > button {
     position: absolute;
     bottom: 40px;
     width: 170px;
@@ -866,7 +868,7 @@ header .social .phone a span {
 
 .what_gender .container .card li .image {
     width: 100%;
-    height: 220px;
+    height: 200px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -991,6 +993,11 @@ header .social .phone a span {
     background-color: #df1359
 }
 
+.what_gender .container .callback button a {
+    text-decoration: none;
+    color: #fff
+}
+
 .what_gender {
     width: 100%;
     background-image: url(../img/our_advantages.png);
@@ -1004,8 +1011,8 @@ header .social .phone a span {
 }
 
 .our_advantages .main .container h2 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -1298,8 +1305,8 @@ header .social .phone a span {
 }
 
 .our_advantages .main .container h4 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 69px;
     line-height: 69px;
     text-align: center;
@@ -1331,8 +1338,8 @@ header .social .phone a span {
 }
 
 .cooperation .container h2 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -1551,7 +1558,7 @@ header .social .phone a span {
     margin-top: 14px
 }
 
-.cooperation .container .sale .partner .head>p {
+.cooperation .container .sale .partner .head > p {
     margin: 0;
     padding: 0;
     font-family: 'Gotham Pro';
@@ -1663,6 +1670,13 @@ header .social .phone a span {
     background-color: #df1359
 }
 
+.cooperation .container .callback button a {
+    text-decoration: none;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
 .recomendation {
     position: relative;
     width: 100%;
@@ -1682,8 +1696,8 @@ header .social .phone a span {
 }
 
 .recomendation .container h2 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -2087,8 +2101,8 @@ header .social .phone a span {
 }
 
 .calculator .container .title h1 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 60px;
     line-height: 60px;
     text-align: center;
@@ -2102,8 +2116,8 @@ header .social .phone a span {
 }
 
 .calculator .container .title h2 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 48px;
     line-height: 48px;
     text-align: center;
@@ -2147,8 +2161,8 @@ header .social .phone a span {
 }
 
 .calculator .container .main h2 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -2164,7 +2178,7 @@ header .social .phone a span {
     width: 100%
 }
 
-.calculator .container .main form>div {
+.calculator .container .main form > div {
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2290,13 +2304,13 @@ input[type=radio] {
     display: none
 }
 
-input[type=radio]:checked+label:before {
+input[type=radio]:checked + label:before {
     border-color: red;
     -webkit-animation: ripple .2s linear forwards;
     animation: ripple .2s linear forwards
 }
 
-input[type=radio]:checked+label:after {
+input[type=radio]:checked + label:after {
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1)
@@ -2469,8 +2483,8 @@ label:after {
 
 .select_floor .container h2 {
     margin-top: 45px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -2674,12 +2688,18 @@ label:after {
     height: 41px;
     border: none;
     background-color: #f38115;
-    margin-top: 12px;
+    margin-top: 42px;
     text-align: center;
     font-size: 16px;
     font-family: 'Gotham Pro';
     color: #fff
 }
+
+.select_floor .container .content button a {
+    text-decoration: none;
+    color: #fff
+}
+
 
 #content ul {
     display: -webkit-box;
@@ -2753,7 +2773,7 @@ label:after {
     color: #fff
 }
 
-.select_floor .container>a {
+.select_floor .container > a {
     width: 328px;
     height: 63px;
     background: -o-linear-gradient(top, #e1234f 0, #f38215 100%);
@@ -2815,8 +2835,8 @@ label:after {
 }
 
 .special_conditions .container h2 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -2924,6 +2944,11 @@ label:after {
     font-weight: 400;
     text-align: center;
     background-color: #df1359
+}
+
+.special_conditions .container .callback button a {
+    text-decoration: none;
+    color: #fff
 }
 
 .special_conditions .container .social {
@@ -3086,8 +3111,8 @@ label:after {
     align-items: center;
     width: 100px;
     height: 100px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 48px;
     color: #e1234f;
     background-color: #fff;
@@ -3186,7 +3211,12 @@ label:after {
     background-color: #df1359
 }
 
-.special_conditions>p {
+.special_conditions .container .hot_shares .callback button a {
+    text-decoration: none;
+    color: #fff
+}
+
+.special_conditions > p {
     color: #fff;
     font-size: 24px;
     font-family: 'Gotham Pro';
@@ -3198,8 +3228,8 @@ label:after {
 
 .clean_installation .container h2 {
     margin-top: 60px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -3238,7 +3268,7 @@ label:after {
     justify-content: center
 }
 
-.clean_installation .container>.content {
+.clean_installation .container > .content {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end
@@ -3392,6 +3422,11 @@ label:after {
     background-color: #df1359
 }
 
+.clean_installation .container .callback button a {
+    text-decoration: none;
+    color: #fff
+}
+
 .minimized {
     cursor: pointer
 }
@@ -3474,8 +3509,8 @@ label:after {
 
 .about_us .container h2 {
     margin-top: 60px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -3544,8 +3579,8 @@ label:after {
 
 .about_us .container ul li h4 {
     margin-top: 20px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 40px;
     background: -o-linear-gradient(top, #e1234f 0, #f38215 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #e1234f), to(#f38215));
@@ -3600,8 +3635,8 @@ label:after {
 .asked_questions .container h2 {
     margin-top: 140px;
     margin-bottom: 20px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -3763,8 +3798,8 @@ label:after {
 .customer_opinion .container h2 {
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -3821,7 +3856,7 @@ label:after {
     font-weight: 400
 }
 
-.customer_opinion .container .responsives .content>span {
+.customer_opinion .container .responsives .content > span {
     padding: 0 20px
 }
 
@@ -3945,8 +3980,8 @@ label:after {
     align-items: center;
     width: 100px;
     height: 100px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 48px;
     color: #e1234f;
     background-color: #fff;
@@ -4045,6 +4080,11 @@ label:after {
     background-color: #df1359
 }
 
+.customer_opinion .container .hot_shares .callback button a {
+    text-decoration: none;
+    color: #fff
+}
+
 .customer_opinion .container .low_price {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4101,8 +4141,8 @@ label:after {
 .completed_projects .container h2 {
     margin-top: 200px;
     margin-bottom: 20px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -4153,8 +4193,8 @@ label:after {
 
 .stages_cooperation .container h2 {
     margin-top: 20px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -4188,7 +4228,7 @@ label:after {
     font-weight: 500
 }
 
-.stages_cooperation .container ul>img {
+.stages_cooperation .container ul > img {
     margin-top: 13px
 }
 
@@ -4217,8 +4257,8 @@ label:after {
 
 .our_guarantees .container h2 {
     margin-top: 180px;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -4289,8 +4329,8 @@ label:after {
 }
 
 .call_us .container .content h2 {
-    font-family: 'Bebas Neue';
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 46px;
     line-height: 46px;
     text-align: center;
@@ -4302,7 +4342,7 @@ label:after {
     color: #e1234f
 }
 
-.call_us .container .content>p {
+.call_us .container .content > p {
     font-size: 24px;
     font-family: 'Gotham Pro';
     font-weight: 500;
@@ -4425,6 +4465,11 @@ label:after {
     font-weight: 400;
     text-align: center;
     background-color: #df1359
+}
+
+.call_us .container .content .callback button a {
+    text-decoration: none;
+    color: #fff
 }
 
 .call_us .container .content .social {
@@ -4564,6 +4609,29 @@ nav {
     padding: 0 22px
 }
 
+.lang {
+    padding: 0 22px;
+    color: #fff;
+    display: none;
+}
+
+.lang a {
+    color: #fff;
+    text-decoration: none;
+    transition: .3s
+}
+
+.lang .active {
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.lang a:hover {
+    transition: .3s;
+    font-weight: bold;
+    font-size: 19px;
+}
+
 .nav li {
     list-style: none;
     padding: 12px 0
@@ -4637,13 +4705,14 @@ nav {
 .change-bg {
     width: 420px;
     height: 360px;
+    /* -webkit-transform: translate(-60%, -30%); */
+    /* -ms-transform: translate(-60%, -30%); */
+    /* transform: translate(-60%, -30%); */
     margin: 0;
     position: absolute;
     top: 0;
     left: -180px;
-    -webkit-transition: .2s ease;
-    -o-transition: .2s ease;
-    transition: .2s ease
+    transition: .2s ease;
 }
 
 header #menu .nav {
@@ -4720,14 +4789,16 @@ header .social .social_messenger ul li .mobile_link {
     transition: .3s
 }
 
-#ex1 {
+#ex1,
+#ex4 {
     width: 700px;
     max-width: 700px;
     height: 434px;
     border-radius: 40px
 }
 
-#ex1 .callback {
+#ex1 .callback,
+#ex4 .callback {
     margin-right: 25px;
     margin-top: 65px;
     display: inline-block;
@@ -4735,19 +4806,23 @@ header .social .social_messenger ul li .mobile_link {
     width: 42%
 }
 
-#ex1 .callback>img {
+#ex1 .callback > img,
+#ex4 .callback > img {
     width: 100%
 }
 
 #ex1 .callback button,
-#ex1 .callback input {
+#ex1 .callback input,
+#ex4 .callback button,
+#ex4 .callback input {
     width: 270px;
     height: 40px;
     border: none;
     background-color: none
 }
 
-#ex1 .callback input {
+#ex1 .callback input,
+#ex4 .callback input {
     margin: 10px auto;
     border: 1px solid #df1359;
     outline: 0;
@@ -4756,7 +4831,8 @@ header .social .social_messenger ul li .mobile_link {
     padding-left: 43px
 }
 
-#ex1 .callback input::-webkit-input-placeholder {
+#ex1 .callback input::-webkit-input-placeholder,
+#ex4 .callback input::-webkit-input-placeholder {
     font-size: 14px;
     font-family: 'Gotham Pro';
     font-weight: 300;
@@ -4764,7 +4840,8 @@ header .social .social_messenger ul li .mobile_link {
     color: #7e7e7e
 }
 
-#ex1 .callback input::-moz-placeholder {
+#ex1 .callback input::-moz-placeholder,
+#ex4 .callback input::-moz-placeholder {
     font-size: 14px;
     font-family: 'Gotham Pro';
     font-weight: 300;
@@ -4772,7 +4849,8 @@ header .social .social_messenger ul li .mobile_link {
     color: #7e7e7e
 }
 
-#ex1 .callback input:-ms-input-placeholder {
+#ex1 .callback input:-ms-input-placeholder,
+#ex4 .callback input:-ms-input-placeholder {
     font-size: 14px;
     font-family: 'Gotham Pro';
     font-weight: 300;
@@ -4780,7 +4858,8 @@ header .social .social_messenger ul li .mobile_link {
     color: #7e7e7e
 }
 
-#ex1 .callback input::-ms-input-placeholder {
+#ex1 .callback input::-ms-input-placeholder,
+#ex4 .callback input::-ms-input-placeholder {
     font-size: 14px;
     font-family: 'Gotham Pro';
     font-weight: 300;
@@ -4788,7 +4867,8 @@ header .social .social_messenger ul li .mobile_link {
     color: #7e7e7e
 }
 
-#ex1 .callback input::placeholder {
+#ex1 .callback input::placeholder,
+#ex4 .callback input::placeholder {
     font-size: 14px;
     font-family: 'Gotham Pro';
     font-weight: 300;
@@ -4796,7 +4876,8 @@ header .social .social_messenger ul li .mobile_link {
     color: #7e7e7e
 }
 
-#ex1 .callback button {
+#ex1 .callback button,
+#ex4 .callback button {
     color: #fff;
     font-size: 16px;
     font-family: 'Gotham Pro';
@@ -4805,21 +4886,24 @@ header .social .social_messenger ul li .mobile_link {
     background-color: #df1359
 }
 
-#ex1 .result {
+#ex1 .result,
+#ex4 .result {
     display: inline-block;
     vertical-align: top;
     margin-top: 45px;
     width: 48%
 }
 
-#ex1 .result h5 {
+#ex1 .result h5,
+#ex4 .result h5 {
     color: #000;
     font-size: 30px;
     font-family: 'Gotham Pro';
     font-weight: 500
 }
 
-#ex1 .result .resultCalc {
+#ex1 .result .resultCalc,
+#ex4 .result .resultCalc {
     color: #df1359;
     font-family: 'Gotham Pro';
     font-weight: 600;
@@ -4834,11 +4918,13 @@ header .social .social_messenger ul li .mobile_link {
     margin: 20px 0
 }
 
-#ex1 .result .resultCalc #summ {
+#ex1 .result .resultCalc #summ,
+#ex4 .result .resultCalc #summ {
     margin: auto 5px
 }
 
-#ex1 .result p {
+#ex1 .result p,
+#ex4 .result p {
     color: #333;
     font-family: 'Gotham Pro';
     font-weight: 400;
@@ -4860,7 +4946,7 @@ header .social .social_messenger ul li .mobile_link {
     margin: 28px auto 25px auto
 }
 
-#ex2>img {
+#ex2 > img {
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .5);
     box-shadow: 0 0 10px rgba(0, 0, 0, .5)
 }
@@ -4970,7 +5056,8 @@ header .social .social_messenger ul li .mobile_link {
 }
 
 .sliderM {
-    position: relative
+    position: relative;
+    overflow: hidden;
 }
 
 .swiper-filter-next,
@@ -5116,17 +5203,40 @@ header .social .social_messenger ul li .mobile_link {
     cursor: pointer !important
 }
 
-.swiper-container-horizontal>.swiper-scrollbar {
+.swiper-container-horizontal > .swiper-scrollbar {
     height: 6px
 }
 
-@media screen and (max-width:1850px) {
+.swiper-pagination {
+    position: relative;
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    margin: 2px;
+}
+
+#phone {
+    position: relative;
+}
+
+.prompt {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    top: -25px;
+    transition: .3s;
+}
+
+.callback form {
+}
+
+@media screen and (max-width: 1850px) {
     .our_advantages .bg {
         top: -290px
     }
 }
 
-@media screen and (max-width:1770px) {
+@media screen and (max-width: 1770px) {
     .our_advantages .bg {
         top: -230px
     }
@@ -5136,7 +5246,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:1700px) {
+@media screen and (max-width: 1700px) {
     header .social .social_messenger ul {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -5166,7 +5276,14 @@ header .social .social_messenger ul li .mobile_link {
     width: 3%
 }
 
-@media screen and (max-width:1380px) {
+@media screen and (max-width: 1480px) {
+    footer .container p {
+        margin: 20px 0
+    }
+}
+
+@media screen and (max-width: 1380px) {
+
     .customer_opinion .slick-next {
         right: -50px
     }
@@ -5196,7 +5313,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:1360px) {
+@media screen and (max-width: 1360px) {
     header .social {
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
@@ -5228,7 +5345,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:1290px) {
+@media screen and (max-width: 1290px) {
     .customer_opinion .slick-next {
         right: 0
     }
@@ -5242,7 +5359,10 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
+    header .logo .lang {
+        display: none !important
+    }
 
     .select_floor .container .f1,
     .select_floor .container .f2 {
@@ -5314,7 +5434,7 @@ header .social .social_messenger ul li .mobile_link {
         padding: 5px 0
     }
 
-    header>.nav {
+    header > .nav {
         display: none
     }
 
@@ -5344,7 +5464,7 @@ header .social .social_messenger ul li .mobile_link {
     .shares .container h2,
     .special_conditions .container h2,
     .stages_cooperation .container h2,
-    .what_gender .container>h2 {
+    .what_gender .container > h2 {
         font-size: 47px;
         line-height: 47px
     }
@@ -5353,7 +5473,7 @@ header .social .social_messenger ul li .mobile_link {
     .clean_installation .container p,
     .customer_opinion .container .low_price p:last-child,
     .special_conditions .container p,
-    .special_conditions>p {
+    .special_conditions > p {
         font-size: 24px
     }
 
@@ -5370,7 +5490,7 @@ header .social .social_messenger ul li .mobile_link {
         line-height: 50px
     }
 
-    .what_gender .container>h2 {
+    .what_gender .container > h2 {
         margin: 20px 0
     }
 
@@ -5378,7 +5498,7 @@ header .social .social_messenger ul li .mobile_link {
         font-size: 16px
     }
 
-    .shares .container>p {
+    .shares .container > p {
         font-size: 20px
     }
 
@@ -5408,9 +5528,9 @@ header .social .social_messenger ul li .mobile_link {
         margin-top: 10px
     }
 
-    .customer_opinion .container .hot_shares .counter>img,
-    .shares .container .hot_shares .counter>img,
-    .special_conditions .container .hot_shares .counter>img {
+    .customer_opinion .container .hot_shares .counter > img,
+    .shares .container .hot_shares .counter > img,
+    .special_conditions .container .hot_shares .counter > img {
         width: 34%;
         margin-right: 5px
     }
@@ -5422,12 +5542,12 @@ header .social .social_messenger ul li .mobile_link {
         height: 80px
     }
 
-    .shares .container>h4 {
+    .shares .container > h4 {
         font-size: 36px;
         line-height: 36px
     }
 
-    .shares>p {
+    .shares > p {
         color: #fff;
         font-size: 20px
     }
@@ -5494,8 +5614,8 @@ header .social .social_messenger ul li .mobile_link {
         font-size: 20px
     }
 
-    .our_advantages .main .container .hot_shares .counter>img,
-    .recomendation .container .hot_shares .counter>img {
+    .our_advantages .main .container .hot_shares .counter > img,
+    .recomendation .container .hot_shares .counter > img {
         width: 34%
     }
 
@@ -5609,7 +5729,8 @@ header .social .social_messenger ul li .mobile_link {
     }
 
     .clean_installation .container .content .image {
-        top: -10%
+        top: -10%;
+        z-index: -1;
     }
 
     .swiper-button-prev,
@@ -5629,7 +5750,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media (max-width:1025px) and (max-height:1367px) {
+@media (max-width: 1025px) and (max-height: 1367px) {
     .our_advantages .main .container .cards li {
         width: 31%
     }
@@ -5705,12 +5826,12 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:1020px) {
+@media screen and (max-width: 1020px) {
     .calculator form label {
         width: 100%
     }
 
-    .calculator .container .main form>div {
+    .calculator .container .main form > div {
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         margin-bottom: 10px
@@ -5869,7 +5990,7 @@ header .social .social_messenger ul li .mobile_link {
     .clean_installation .container p,
     .customer_opinion .container .low_price p:last-child,
     .special_conditions .container p,
-    .special_conditions>p {
+    .special_conditions > p {
         font-size: 16px
     }
 
@@ -5890,7 +6011,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:990px) {
+@media screen and (max-width: 990px) {
     .cooperation .container .sale .partner {
         width: 75%
     }
@@ -5912,7 +6033,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:910px) {
+@media screen and (max-width: 910px) {
     .customer_opinion .container .hot_shares {
         margin-top: 65px
     }
@@ -5984,7 +6105,7 @@ header .social .social_messenger ul li .mobile_link {
         align-items: center
     }
 
-    .select_floor .container>button {
+    .select_floor .container > button {
         width: 200px;
         height: 40px;
         background: -o-linear-gradient(top, #e1234f 0, #f38215 100%);
@@ -6020,14 +6141,14 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:850px) {
+@media screen and (max-width: 850px) {
     .our_advantages .main .container h4 {
         font-size: 26px;
         line-height: 26px
     }
 }
 
-@media screen and (max-width:841px) {
+@media screen and (max-width: 841px) {
     .our_advantages .main .container .cards li {
         width: 43%;
         padding-right: 0
@@ -6049,7 +6170,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width: 800px) {
     .container {
         width: 98%
     }
@@ -6063,7 +6184,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media (max-width:769px) and (max-height:1025px) {
+@media (max-width: 769px) and (max-height: 1025px) {
     .our_advantages .main .container .cards li {
         width: 47%
     }
@@ -6089,8 +6210,8 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:768px) {
-    #ex1 {
+@media screen and (max-width: 768px) {
+    #ex1, #ex4 {
         max-width: -webkit-max-content;
         max-width: -moz-max-content;
         max-width: max-content;
@@ -6099,16 +6220,21 @@ header .social .social_messenger ul li .mobile_link {
     }
 
     #ex1 .callback button,
-    #ex1 .callback input {
+    #ex1 .callback input,
+    #ex4 .callback button,
+    #ex4 .callback input {
         width: 210px
     }
 
-    #ex1 .result h5 {
+    #ex1 .result h5,
+    #ex4 .result h5 {
         font-size: 20px
     }
 
     #ex1 .result .resultCalc,
-    #ex1 .result p {
+    #ex1 .result p,
+    #ex4 .result .resultCalc,
+    #ex4 .result p {
         font-size: 14px
     }
 
@@ -6160,7 +6286,7 @@ header .social .social_messenger ul li .mobile_link {
         font-size: 12px
     }
 
-    .select_floor .container>a {
+    .select_floor .container > a {
         width: 200px;
         height: 40px;
         font-size: 14px
@@ -6219,7 +6345,7 @@ header .social .social_messenger ul li .mobile_link {
     .shares .container h2,
     .special_conditions .container h2,
     .stages_cooperation .container h2,
-    .what_gender .container>h2 {
+    .what_gender .container > h2 {
         font-size: 36px;
         line-height: 36px
     }
@@ -6232,7 +6358,7 @@ header .social .social_messenger ul li .mobile_link {
     .clean_installation .container p,
     .customer_opinion .container .low_price p:last-child,
     .special_conditions .container p,
-    .special_conditions>p {
+    .special_conditions > p {
         font-size: 18px
     }
 
@@ -6271,7 +6397,7 @@ header .social .social_messenger ul li .mobile_link {
         width: auto !important
     }
 
-    .shares .container>p {
+    .shares .container > p {
         font-size: 18px;
         margin: 10px 0
     }
@@ -6319,17 +6445,17 @@ header .social .social_messenger ul li .mobile_link {
     .shares .container .hot_shares .callback input,
     .special_conditions .container .hot_shares .callback button,
     .special_conditions .container .hot_shares .callback input {
-        width: 170px;
-        height: 25px
+        width: 190px;
+        height: 35px;
     }
 
-    .shares .container>h4 {
+    .shares .container > h4 {
         font-size: 26px;
         line-height: 26px;
         margin: 10px 0
     }
 
-    .shares>p {
+    .shares > p {
         color: #fff;
         font-size: 16px
     }
@@ -6480,7 +6606,7 @@ header .social .social_messenger ul li .mobile_link {
         width: 100%
     }
 
-    .call_us .container .content>p {
+    .call_us .container .content > p {
         font-size: 18px;
         margin-top: 5px
     }
@@ -6507,6 +6633,11 @@ header .social .social_messenger ul li .mobile_link {
 
     .call_us .container .content .tel .nomers {
         margin-top: 5px
+    }
+
+    .call_us .container .content .tel a {
+        text-decoration: none;
+        color: #000000;
     }
 
     .call_us .container .content .callback {
@@ -6629,8 +6760,8 @@ header .social .social_messenger ul li .mobile_link {
         display: block
     }
 
-    .our_advantages .main .container .hot_shares .counter>img,
-    .recomendation .container .hot_shares .counter>img {
+    .our_advantages .main .container .hot_shares .counter > img,
+    .recomendation .container .hot_shares .counter > img {
         width: 24%
     }
 
@@ -6644,13 +6775,21 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:745px) {
+@media screen and (max-width: 745px) {
     .our_advantages .bg img {
         height: 580px
     }
 }
 
-@media screen and (max-width:681px) {
+@media screen and (max-width: 681px) {
+    .what_gender .container .card li {
+        height: 340px;
+    }
+
+    .what_gender .container .card li > button {
+        bottom: 10px;
+    }
+
     .our_advantages .bg img {
         height: 630px
     }
@@ -6664,7 +6803,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:650px) {
+@media screen and (max-width: 650px) {
     .shares .container .main_advantages li {
         margin-left: 20%
     }
@@ -6703,7 +6842,7 @@ header .social .social_messenger ul li .mobile_link {
     text-align: center
 }
 
-@media screen and (max-width:625px) {
+@media screen and (max-width: 625px) {
     .our_advantages .bg img {
         height: 680px
     }
@@ -6733,7 +6872,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
     .special_conditions .bg {
         height: 1200px
     }
@@ -6746,14 +6885,24 @@ header .social .social_messenger ul li .mobile_link {
         width: 93%
     }
 
-    .clean_installation .container>.content {
+    .clean_installation .container > .content {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center
     }
+
+    iframe {
+        width: 98%;
+        margin: 0 auto;
+    }
+
+    .call_us .container .image {
+        display: flex;
+        justify-content: center;
+    }
 }
 
-@media screen and (max-width:586px) {
+@media screen and (max-width: 586px) {
     .sertificate .slick-next {
         right: 3%
     }
@@ -6769,7 +6918,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:580px) {
+@media screen and (max-width: 580px) {
     .asked_questions .container .ask p {
         font-size: 12px
     }
@@ -6786,40 +6935,47 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:540px) {
+@media screen and (max-width: 540px) {
     .modal {
         padding: 15px 5px
     }
 
-    #ex1 .result {
+    #ex1 .result,
+    #ex4 .result {
         margin-top: 15px;
         width: 100%
     }
 
-    #ex1 .callback {
+    #ex1 .callback,
+    #ex4 .callback {
         margin-top: 50px;
         width: 100%
     }
 
     #ex1 .callback button,
-    #ex1 .callback input {
+    #ex1 .callback input,
+    #ex4 .callback button,
+    #ex4 .callback input {
         width: 100%
     }
 
-    #ex1 .result h5 {
+    #ex1 .result h5,
+    #ex4 .result h5 {
         font-size: 16px
     }
 
-    #ex1 .result .resultCalc {
+    #ex1 .result .resultCalc,
+    #ex4 .result .resultCalc {
         margin: 10px 0
     }
 
-    #ex1 .result p {
+    #ex1 .result p,
+    #ex4 .result p {
         font-size: 13px
     }
 }
 
-@media screen and (max-width:530px) {
+@media screen and (max-width: 530px) {
     .special_conditions .bg {
         height: 1190px
     }
@@ -6850,7 +7006,7 @@ header .social .social_messenger ul li .mobile_link {
     .shares .container h2,
     .special_conditions .container h2,
     .stages_cooperation .container h2,
-    .what_gender .container>h2 {
+    .what_gender .container > h2 {
         font-size: 22px;
         line-height: 22px
     }
@@ -6863,7 +7019,7 @@ header .social .social_messenger ul li .mobile_link {
     .clean_installation .container p,
     .customer_opinion .container .low_price p:last-child,
     .special_conditions .container p,
-    .special_conditions>p {
+    .special_conditions > p {
         font-size: 14px
     }
 
@@ -6888,7 +7044,7 @@ header .social .social_messenger ul li .mobile_link {
         width: 30px
     }
 
-    .shares .container>p {
+    .shares .container > p {
         font-size: 14px;
         margin: 5px 0
     }
@@ -6995,34 +7151,6 @@ header .social .social_messenger ul li .mobile_link {
         font-size: 12px
     }
 
-    .customer_opinion .container .hot_shares .callback input::-webkit-input-placeholder,
-    .shares .container .hot_shares .callback input::-webkit-input-placeholder,
-    .special_conditions .container .hot_shares .callback input::-webkit-input-placeholder,
-    .what_gender .container .callback input::-webkit-input-placeholder {
-        font-size: 12px
-    }
-
-    .customer_opinion .container .hot_shares .callback input::-moz-placeholder,
-    .shares .container .hot_shares .callback input::-moz-placeholder,
-    .special_conditions .container .hot_shares .callback input::-moz-placeholder,
-    .what_gender .container .callback input::-moz-placeholder {
-        font-size: 12px
-    }
-
-    .customer_opinion .container .hot_shares .callback input:-ms-input-placeholder,
-    .shares .container .hot_shares .callback input:-ms-input-placeholder,
-    .special_conditions .container .hot_shares .callback input:-ms-input-placeholder,
-    .what_gender .container .callback input:-ms-input-placeholder {
-        font-size: 12px
-    }
-
-    .customer_opinion .container .hot_shares .callback input::-ms-input-placeholder,
-    .shares .container .hot_shares .callback input::-ms-input-placeholder,
-    .special_conditions .container .hot_shares .callback input::-ms-input-placeholder,
-    .what_gender .container .callback input::-ms-input-placeholder {
-        font-size: 12px
-    }
-
     .customer_opinion .container .hot_shares .callback input::placeholder,
     .shares .container .hot_shares .callback input::placeholder,
     .special_conditions .container .hot_shares .callback input::placeholder,
@@ -7038,12 +7166,12 @@ header .social .social_messenger ul li .mobile_link {
         margin-bottom: 5px
     }
 
-    .shares .container>h4 {
+    .shares .container > h4 {
         font-size: 20px;
         line-height: 20px
     }
 
-    .shares>p {
+    .shares > p {
         font-size: 12px;
         padding: 0 15px 20px 15px
     }
@@ -7086,7 +7214,7 @@ header .social .social_messenger ul li .mobile_link {
         height: 330px
     }
 
-    .call_us .container .content>p {
+    .call_us .container .content > p {
         font-size: 14px
     }
 
@@ -7126,9 +7254,49 @@ header .social .social_messenger ul li .mobile_link {
     .recomendation .container .content li .description .callback {
         margin-left: -50px
     }
+
+    .callback form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+    }
+
+    .customer_opinion .container .hot_shares .callback button, .customer_opinion .container .hot_shares .callback input, .shares .container .hot_shares .callback button, .shares .container .hot_shares .callback input, .special_conditions .container .hot_shares .callback button, .special_conditions .container .hot_shares .callback input {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .customer_opinion .container .hot_shares .callback input, .shares .container .hot_shares .callback input, .special_conditions .container .hot_shares .callback input {
+        background-position: 5px 50%;
+        padding-left: 30px;
+    }
+
+    .our_advantages .main .container .hot_shares .callback button {
+        font-size: 14px;
+    }
+
+    .our_advantages .main .container .hot_shares .callback input {
+        font-size: 14px;
+        background-position: 5px 50%;
+        padding-left: 30px;
+    }
+
+    .clean_installation .container .callback input {
+        margin-right: 0px;
+    }
+
+    .recomendation .container .callback button {
+        margin-bottom: 15px;
+    }
+
+    .clean_installation .container .callback button {
+        margin-top: 10px;
+    }
+
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
     .our_advantages .bg .background {
         height: 1100px
     }
@@ -7146,7 +7314,7 @@ header .social .social_messenger ul li .mobile_link {
         width: 42%
     }
 
-    .cooperation .container .sale .partner .head>p {
+    .cooperation .container .sale .partner .head > p {
         font-size: 13px;
         line-height: 13px
     }
@@ -7242,7 +7410,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
     .recomendation .container .content li ul li span {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -7253,9 +7421,17 @@ header .social .social_messenger ul li .mobile_link {
     .recomendation .container .content li ul li span p {
         margin-left: 0
     }
+
+    .butList {
+        flex-direction: column;
+    }
+
+    .calculator .container .main button {
+        width: 80%;
+    }
 }
 
-@media screen and (max-width:450px) {
+@media screen and (max-width: 450px) {
     .our_guarantees .container h2 {
         margin-top: 100px
     }
@@ -7290,7 +7466,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:440px) {
+@media screen and (max-width: 440px) {
     header .social .phone a span {
         font-size: 14px
     }
@@ -7329,7 +7505,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:420px) {
+@media screen and (max-width: 420px) {
     .our_advantages .bg img {
         height: 510px
     }
@@ -7339,7 +7515,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:415px) {
+@media screen and (max-width: 415px) {
 
     .about_us .container h2,
     .asked_questions .container h2,
@@ -7357,7 +7533,7 @@ header .social .social_messenger ul li .mobile_link {
     .shares .container h2,
     .special_conditions .container h2,
     .stages_cooperation .container h2,
-    .what_gender .container>h2 {
+    .what_gender .container > h2 {
         font-size: 30px;
         line-height: 32px;
         margin-top: 20px
@@ -7413,7 +7589,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 
     .about_us {
-        background-position-y: 120%
+        background-position-y: 117%
     }
 
     .customer_opinion .slick-next {
@@ -7489,7 +7665,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:405px) {
+@media screen and (max-width: 405px) {
     .our_advantages .bg img {
         height: 560px
     }
@@ -7499,7 +7675,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:380px) {
+@media screen and (max-width: 380px) {
     .calculator .container .main form div p {
         font-size: 13px
     }
@@ -7527,9 +7703,9 @@ header .social .social_messenger ul li .mobile_link {
         font-size: 12px
     }
 
-    .customer_opinion .container .hot_shares .counter>img,
-    .shares .container .hot_shares .counter>img,
-    .special_conditions .container .hot_shares .counter>img {
+    .customer_opinion .container .hot_shares .counter > img,
+    .shares .container .hot_shares .counter > img,
+    .special_conditions .container .hot_shares .counter > img {
         width: 30%
     }
 
@@ -7538,7 +7714,13 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:360px) {
+@media screen and (max-width: 370px) {
+    .stages_cooperation {
+        background-position-y: 112%;
+    }
+}
+
+@media screen and (max-width: 360px) {
     .customer_opinion .container .responsives .content {
         width: 270px
     }
@@ -7559,7 +7741,7 @@ header .social .social_messenger ul li .mobile_link {
         left: 9%
     }
 
-    .cooperation .container .sale .partner .head>p {
+    .cooperation .container .sale .partner .head > p {
         font-size: 11px;
         line-height: 11px
     }
@@ -7583,13 +7765,13 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:335px) {
+@media screen and (max-width: 335px) {
     .our_advantages .bg img {
         height: 660px
     }
 }
 
-@media screen and (max-width:330px) {
+@media screen and (max-width: 330px) {
 
     .what_gender .container .card li .accordion div,
     .what_gender .container .card li .accordion1 div,
@@ -7601,7 +7783,7 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:1025px) {
+@media screen and (max-width: 1025px) {
 
     .swiper-button-next,
     .swiper-container-rtl .swiper-button-prev {
@@ -7614,13 +7796,13 @@ header .social .social_messenger ul li .mobile_link {
     }
 }
 
-@media screen and (max-width:415px) {
+@media screen and (max-width: 415px) {
     .filterLink {
         width: 90%
     }
 }
 
-@media screen and (max-width:376px) {
+@media screen and (max-width: 376px) {
     .filterLink {
         width: 90%
     }
